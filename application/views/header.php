@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -19,10 +19,11 @@
     <![endif]-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
   </head>
   <body>
     <div class="container-fluid">
@@ -40,19 +41,19 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 							<ul class="nav navbar-nav navbar-right">
-                <?php if(!isset($user) || !$user) { ?>
+                <?php if( !$this->session->userdata('logged_in') ) { ?>
 								<li>
                 <a href="<?php echo base_url('login'); ?>"> Login </a>
 								</li>
 
-                <?php } else { ?>
+              <?php } else { $user = $this->session->userdata('name'); ?>
                 <li>
                 <a style="color: black;">
                 Logged in as <strong><?php echo $user; ?></strong>.
                 </a>
                 </li>
                 <li>
-                  <a href="<?php echo base_url('logout'); ?>"> Logout </a>
+                  <a href="<?php echo base_url('authentication/logout'); ?>"> Logout </a>
                 </li>
                 <?php } ?>
 							</ul>
@@ -61,51 +62,3 @@
 					</nav>
 				</div>
 			</div> <!-- end of .row -->
-
-      <form class="form-inline text-center" action="" method="post">
-        <input type='hidden' name='user_id' value='student' />
-        <input type="text" name="nama" value="" class='form-control' placeholder="Nama pasien" />
-        <input type="text" name="usia" value="" class='form-control' placeholder="Usia" />
-        <input type="text" name="diagnosis" value="" class='form-control' placeholder="Diagnosis" />
-        <input type="text" name="tindakan" value="" class='form-control' placeholder="Tindakan" />
-        <select class='form-control' name='kode'>
-          <option value="1">Diskusi</option>
-          <option value="2">Anamnesis &amp; PF</option>
-          <option value="3">Observasi</option>
-          <option value="4">Asisten</option>
-          <option value="5">Operator</option>
-        </select>
-        <input type='text' name='verifikator' value="" class="form-control" placeholder="Pengajar" />
-        <input type="submit" value="Tambah" class="btn btn-primary" />
-      </form>
-
-      <div class="row"> <!-- untuk tabel -->
-        <table class='table'>
-          <thead>
-            <th>#</th>
-            <th>Tanggal</th>
-            <th>Nama</th>
-            <th>Usia</th>
-            <th>Diagnosis</th>
-            <th>Tindakan</th>
-            <th>Kode</th>
-            <th>Verifikator</th>
-            <th>Status</th>
-          </thead>
-
-          <?php
-          foreach($allEntry as $entry) {
-            echo "<tr>";
-            foreach($entry as $k => $v) {
-              if($k != 'user_id' && $k != 'verified')
-                echo "<td>$v</td>";
-            }
-            echo "<td>" . (!$entry['verified'] ? 'Menunggu verifikasi' : 'Terverifikasi') . "</td>";
-            echo "</tr>";
-          }
-          ?>
-        </table>
-      </div>
-    </div> <!-- end of container-fluid -->
-  </body>
-</html>

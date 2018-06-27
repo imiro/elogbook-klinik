@@ -60,9 +60,15 @@ class List_model extends CI_Model {
         }
 
         public function get_entries($user_id) {
-          // TODO: limit to top 10
+          // TODO: limit to top 10 ?
           $query = $this->db->get_where('kegiatan', array('user_id' => $user_id));
           return $query->result_array();
+        }
+
+        public function getNameById($user_id) {
+          $query = $this->db->get_where('user', array('user_id' => $user_id));
+          $result = $query->result_array();
+          return $result[0]['name'];
         }
 
         public function bulkVerify($verifikator, $rowIds, $table = 'kegiatan') {
@@ -70,14 +76,29 @@ class List_model extends CI_Model {
             $this->verifyById($verifikator, $id, $table);
         }
 
-        public function verifyById($verifikator, $rowId, $table = 'kegiatan') {
+        /*
+         * Diberikan sebuah entri dengan id=$rowId, mengubah kolom "verified" menjadi:
+         *    positif(1): = Terverifikasi
+         *    negatif(-1): = Menolak verifikasi
+         * Fungsi ini mengubah database.
+         *
+         * @param integer       $rowId  id dari entri
+         * @param integer(-1..1) $value  setuju/tolak verifikasi ## harusnya tidak mungkin jadi 0 lagi, once touched by verificator
+         */
+        public function verifyById($rowId, $verifikator, $value, $table = 'kegiatan') {
           $query = $this->db->get_where($table, array('id' => $rowId, 'verifikator' => $verifikator));
 
           if( count($query->result()) == 1 ) {
-            $this->db->set('verified', 1);
+            $arr = array('verified' => $value,
+                  'verified_at' => time() );
+            error_log(print_r($arr,1));
+            $this->db->set($arr);
             $this->db->where('id', $rowId);
             $this->db->update($table);
+            return true;
           }
+
+          return false;
         }
 
         public function ubahVerifikator($rowIds, $verifikator, $table = 'kegiatan')
@@ -86,6 +107,61 @@ class List_model extends CI_Model {
             $this->db->set('verifikator', $verifikator);
             $this->db->where('id', $id);
             $this->db->update($table);
+          }
+        }
+
+        /*
+         * Given a verificator's Id, mengembalikan array berisi daftar antrian yang belum diverifikasi olehnya
+         *
+         * @param integer $verifikatorId  - id verifikator
+         *
+         * @return array
+         *
+         * ## THIS IS A GOOD PRACTICE FOLLOWING phpDocumentor's guidelines
+         */
+         // TODO: limit hasil!
+        public function dapatkanAntrianVerifikasi($verifikatorId) {
+          $this->db->select('*');
+          $this->db->where('verifikator', $verifikatorId);
+          $this->db->where('verified', 0); // dapatkan yang belum diverifikasi saja
+          $this->db->from('kegiatan');
+
+          $query = $this->db->get();
+          // $query = $this->db->get_where('kegiatan', array('verifikator' => $verifikatorId));
+          if(!$query->num_rows())
+            return false;
+          else {
+            return $query->result_array();
+          }
+        }
+
+        // TODO: limit hasil!
+        public function dapatkanSudahVerifikasi($verifikatorId) {
+          $this->db->select('*');
+          $this->db->where('verifikator', $verifikatorId);
+          $this->db->where('verified !=', 0); // dapatkan yang sudah pernah diverifikasi/ditolak saja
+          $this->db->from('kegiatan');
+
+          $query = $this->db->get();
+          // $query = $this->db->get_where('kegiatan', array('verifikator' => $verifikatorId));
+          if(!$query->num_rows())
+            return false;
+          else {
+            return $query->result_array();
+          }
+        }
+
+        public function dapatkanSemuaEntriVerifikator($verifikatorId) {
+          $this->db->select('*');
+          $this->db->where('verifikator', $verifikatorId);
+          $this->db->from('kegiatan');
+
+          $query = $this->db->get();
+
+          if(!$query->num_rows())
+            return false;
+          else {
+            return $query->result_array();
           }
         }
 
