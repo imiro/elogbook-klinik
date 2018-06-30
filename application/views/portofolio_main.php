@@ -6,11 +6,11 @@
         <input type="text" name="diagnosis" value="" class='form-control' placeholder="Diagnosis" />
         <input type="text" name="tindakan" value="" class='form-control' placeholder="Tindakan" />
         <select class='form-control' name='kode'>
-          <option value="1">Diskusi</option>
-          <option value="2">Anamnesis &amp; PF</option>
-          <option value="3">Observasi</option>
-          <option value="4">Asisten</option>
-          <option value="5">Operator</option>
+          <option value="1">Observasi</option>
+          <option value="2">Asistensi</option>
+          <option value="3">Operator dalam Pengawasan</option>
+          <option value="4">Operator Mandiri</option>
+          <option value="5">Konsultasi</option>
         </select>
         <input type='text' name='verifikator' value="" class="form-control" placeholder="Pengajar" />
         <input type="submit" value="Tambah" class="btn btn-primary" />
@@ -19,13 +19,12 @@
       <div class="row"> <!-- untuk tabel -->
         <table class='table'>
           <thead>
-            <th>#</th>
-            <th>Tanggal</th>
-            <th>Tempat</th>
+            <th>No.</th>
             <th>Nama</th>
             <th>Usia</th>
+            <th>Tanggal Tindakan</th>
             <th>Diagnosis</th>
-            <th>Tindakan</th>
+            <th>Achievement</th>
             <th>Kode</th>
             <th>Verifikator</th>
             <th>Ditambahkan pada</th>

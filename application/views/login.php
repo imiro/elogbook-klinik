@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="<?=base_url()?>assets/images/codeigniter_logo.png" type="image/x-icon">
 
-    <title>Organization Name- Login</title>
+    <title>Sekolah OnkoGin- Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -28,14 +28,38 @@
 </head>
 
 <body>
+<center>           
 
+<section class="py-5" style="background:url('img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
 
-	<div class="container">
+        <div class="container give_margin_top">
+            <table>
+            	<tr>
+            		<td width="20%"> <img src="img/FKUI.png" width=100%> </td>
+            		<td width="60%"> 
+            			<center>
+            			<h1 class="league-spartan">Sekolah Spesialis 2 Onkologi Ginekologi Departemen Obstetri dan Ginekologi RSCM</h1>
+            		<td width="20%"> <img src="img/RSCM.png" width=100%> </td>
+           </table>
+     	</div>
+</section>
+
+<section class="py-5" style="background:url('img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+
+        <div class="container give_margin_top">
+            <br>
+            <p style="font-weight:bold"><strong>CARA PEMAKAIAN</strong></p>
+            <p align=center style="font-size:0.9em">Pada website ini, anda dapat menuliskan portofolio dan logbook hasil pencapaian klinik anda secara online.</p>
+        </div>
+</section>
+<section class="py-5" style="background:url('img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black"><div class="container give_margin_top"> </div></section>
+
+<div class="container">
 	    <div class="row">
 	        <div class="col-md-4 col-md-offset-4">
 	            <div class="login-panel panel panel-default">
 	                <div class="panel-heading">
-	                    <h3 class="panel-title">Organization Name - Please Sign In</h3>
+	                    <h3 class="panel-title">Silakan Sign In</h3>
 	                </div>
 	                <div class="panel-body">
 	                	<small id="login-empty-input" class="error">email or password cannot be empty <br>&nbsp;</small>
@@ -63,6 +87,32 @@
 	    </div>
 	</div>
 
+</center>
+
+<!-- Footer -->
+<section class="py-5" style="background:url('img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+        <div class="container give_margin_top">
+    <footer class="bg-dark">
+      <div class="container text-white">
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="m-0" style="border-bottom:1px solid #ccc; padding-bottom:5px">For Question and Assistance</h4>
+            <div class="row" style="padding-top:1px">
+              <div class="col-sm-6"><img src="img/phone.png" width="20" height="20"> Aji Muharrom</div>
+              <div class="col-sm-6"><img src="img/phone.png" width="20" height="20"> Kevin Yonathan</div>
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <br>
+            <p class="m-0 text-center text-white" style="text-align:right"><strong>Sekolah Sp2 Onkologi Ginekologi Dept Obsgin RSCM</strong></p>
+
+          </div>
+        </div>
+      </div>
+</section>
+      <!-- /.container -->
+	
 
 
     <!-- jQuery -->
