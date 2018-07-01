@@ -1,9 +1,15 @@
       <form class="form-inline text-center" action="" method="post">
-        <input type='hidden' name='user_id' value='<?php echo $this->session->userdata('user_id'); ?>' />
+        <input type="text" id="datepicker" name="tanggal" value="<?php echo date('Y-m-d'); ?>" class="form-control" placeholder="Tanggal"/>
         <input type="text" name="nama" value="" class='form-control' placeholder="Nama pasien" />
         <input type="text" name="usia" value="" class='form-control' placeholder="Usia" />
-        <input type="text" id="datepicker" name="tanggal" value="" class="form-control" placeholder="mm/dd/yyyy"/><!-- TODO datetime-picker -->
+        <input type="text" name="nrm" value="" class='form-control' placeholder="NRM" />
         <input type="text" name="diagnosis" value="" class='form-control' placeholder="Diagnosis" />
+        <select class='form-control' name='lokasi' placeholder='Lokasi'>
+          <option value="poliklinik">Poliklinik</option>
+          <option value="ok">Ruang Operasi</option>
+          <option value="igd">Instalasi Gawat Darurat</option>
+          <option value="icu">Intensive Care Unit</option>
+        </select>
         <input type="text" name="tindakan" value="" class='form-control' placeholder="Tindakan" />
         <select class='form-control' name='kode'>
           <option value="1">Observasi</option>
@@ -12,38 +18,55 @@
           <option value="4">Operator Mandiri</option>
           <option value="5">Konsultasi</option>
         </select>
-        <input type='text' name='verifikator' value="" class="form-control" placeholder="Pengajar" />
+        <select class='form-control' name='verifikator'>
+            <option value="" > --- PILIH VERIFIKATOR --- </option>
+          <?php foreach($verificators as $vid => $vname) { ?>
+            <option value="<?php echo $vid; ?>"><?php echo $vname; ?></option>
+          <?php } ?>
+        </select>
         <input type="submit" value="Tambah" class="btn btn-primary" />
       </form>
 
       <div class="row"> <!-- untuk tabel -->
         <table class='table'>
           <thead>
-            <th>No.</th>
-            <th>Nama</th>
-            <th>Usia</th>
-            <th>Tanggal Tindakan</th>
-            <th>Diagnosis</th>
-            <th>Achievement</th>
-            <th>Kode</th>
-            <th>Verifikator</th>
-            <th>Ditambahkan pada</th>
-            <th>Status</th>
+            <?php
+            $tabel = array(
+              "id" => "#",
+              "tanggal" => "Tanggal",
+              "lokasi" => "Tempat",
+              "nama" => "Nama Pasien",
+              "usia" => "Usia",
+              "nrm" => "NRM",
+              "diagnosis" => "Diagnosis",
+              "tindakan" => "Tindakan",
+              "kode" => "Achievement",
+              "verifikator" => "Verifikator",
+              "created_at" => "Diinput Tanggal"
+            );
+
+            foreach($tabel as $key => $heading) {
+              echo "<th>$heading</th>\n";
+            }
+            ?>
           </thead>
 
           <?php
+
           foreach($allEntry as $entry) {
             echo "<tr>";
-            foreach($entry as $k => $v) {
-              if($k != 'user_id' && $k != 'verified' && $k != 'verified_at' )
-                echo "<td>$v</td>";
+            foreach($tabel as $key => $heading) {
+              echo "<td>{$entry[$key]}</td>";
             }
 
             // TODO: styling!
             echo "<td>";
             if (!$entry['verified']) echo 'Menunggu verifikasi';
-            else if ($entry['verified'] > 0) echo "Terverifikasi pada {$entry['verified_at']}";
-            else echo "Verifikasi ditolak pada {$entry['verified_at']}";
+            else {
+              if ($entry['verified'] > 0) echo "Terverifikasi pada ";
+              else echo "Verifikasi ditolak pada ";
+              echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
+            }
             echo "</td>";
 
             echo "</tr>";
@@ -54,7 +77,7 @@
     </div> <!-- end of container-fluid -->
     <script type="text/javascript">
       $(document).ready(function() {
-        $("#datepicker").datepicker();
+        $("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
       });
     </script>
   </body>

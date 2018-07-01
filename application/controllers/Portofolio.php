@@ -36,9 +36,13 @@ class Portofolio extends CI_Controller {
 		{
 
 			$data = array();
-			$keys = array('user_id', 'nama', 'tanggal', 'usia', 'diagnosis', 'tindakan', 'kode', 'verifikator');
+			// TODO: sudah bener semua kah? di database dll
+			$keys = array('user_id', 'nama', 'tanggal', 'lokasi', 'usia', 'nrm', 'diagnosis', 'tindakan', 'kode', 'verifikator');
+			// $keys = array('user_id', 'nama', 'tanggal', 'usia', 'diagnosis', 'tindakan', 'kode', 'verifikator');
 
 			foreach($keys as $k) $data[$k] = $this->input->post($k); // TODO: unverified!! needs verification?
+			$data['user_id'] = $this->user;
+			// $data['tanggal'] = strtotime($data['tanggal']);
 
 			// date_default_timezone_set('Asia/Jakarta');
 			// $data['tanggal'] = date('Y-m-d');
@@ -51,6 +55,7 @@ class Portofolio extends CI_Controller {
 		foreach($viewData['allEntry'] as &$row) {
 			$row['verifikator'] = $this->list_model->getNameById($row['verifikator']);
 		}
+		$viewData['verificators'] = $this->list_model->listVerificators();
 
 		$this->load->view('header');
 		$this->load->view('portofolio_main', $viewData);

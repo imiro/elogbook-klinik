@@ -30,7 +30,7 @@
     <!-- wrapper -->
 
     <!-- Footer -->
-<section class="py-5" style="background:url('img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+<section class="py-5" style="background:url('assets/img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
         <div class="container give_margin_top">
     <footer class="bg-dark">
       <div class="container text-white">
@@ -38,8 +38,8 @@
           <div class="col-sm-12">
             <h4 class="m-0" style="border-bottom:1px solid #ccc; padding-bottom:5px">For Question and Assistance</h4>
             <div class="row" style="padding-top:1px">
-              <div class="col-sm-6"><img src="img/phone.png" width="20" height="20"> Aji Muharrom</div>
-              <div class="col-sm-6"><img src="img/phone.png" width="20" height="20"> Kevin Yonathan</div>
+              <div class="col-sm-6"><img src="assets/img/phone.png" width="20" height="20"> Aji Muharrom</div>
+              <div class="col-sm-6"><img src="assets/img/phone.png" width="20" height="20"> Kevin Yonathan</div>
             </div>
           </div>
 

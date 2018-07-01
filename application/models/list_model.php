@@ -67,6 +67,8 @@ class List_model extends CI_Model {
 
         public function getNameById($user_id) {
           $query = $this->db->get_where('user', array('user_id' => $user_id));
+          if( !$query->num_rows() )
+            return false;
           $result = $query->result_array();
           return $result[0]['name'];
         }
@@ -163,6 +165,30 @@ class List_model extends CI_Model {
           else {
             return $query->result_array();
           }
+        }
+
+        /*
+         * Mendapatkan daftar semua Verifikator.
+         * Mengembalikan sebuah array berisi daftar nama semua verifikator, dengan user_id sebagai key.
+         *
+         * (no param)
+         *
+         * @returns array [$key => $value] = [$id => $nama]
+         */
+        public function listVerificators() {
+          $query = $this->db->get_where('user', array('role' => 'teacher'));
+
+          if( !$query->num_rows() )
+            return NULL;
+
+          $ret = array();
+          $results = $query->result_array();
+
+          foreach($results as $row) {
+            $ret[$row["user_id"]] = $row["name"];
+          }
+
+          return $ret;
         }
 
         public function changeCategoryTitleById($idKategori, $judul) {

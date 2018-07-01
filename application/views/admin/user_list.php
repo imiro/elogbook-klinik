@@ -21,7 +21,7 @@
                 </div>
             <?php endif;?>
             <div class="row">
-                <div class="col-lg-12">      
+                <div class="col-lg-12">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-user-list">
                         <thead>
                             <tr>
@@ -34,20 +34,20 @@
                         <tbody>
                             <?php foreach($users  as $row): ?>
                             <tr>
-                                <td><?php echo $row->name; ?></td> 
+                                <td><?php echo $row->name; ?></td>
                                 <td><?php echo $row->email; ?></td>
-                                <td><?php echo ucfirst($row->role) ?></td> 
-                                
+                                <td><?php echo ucfirst($row->role) ?></td>
+
                                 <td>
                                     <a class="btn btn-primary" id="user-edit"  onclick="edit_user_popup('<?=$row->email?>','<?=$row->user_id?>','<?=$row->name?>','<?=$row->role?>');" data-toggle="modal" data-target="#editUser"> EDIT </a>
                                     <a class="btn btn-warning" id="user-riset" onclick="reset_confirmation('<?=$row->email?>','<?=$row->user_id?>')" data-toggle="modal" data-target="#resetConfirm"> RESET </a>
                                     <a class="btn btn-danger" id="user-delete" onclick="deactivate_confirmation('<?=$row->email?>','<?=$row->user_id?>');" data-toggle="modal" data-target="#deactivateConfirm"> DELETE </a>
-                                    
+
                                 </td>
 
                             </tr>
                             <?php endforeach; ?>
-                            
+
                         </tbody>
                     </table>
 
@@ -128,7 +128,7 @@
                                     <label class="error" id="error_name"> field is required.</label>
                                     <label class="error" id="error_name2"> name must be alphanumeric.</label>
                                     <input class="form-control" id="name" placeholder="Name" name="name" type="text" autofocus>
-                                </div> 
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -137,7 +137,7 @@
                                     <label class="error" id="error_email2"> email has already exist.</label>
                                     <label class="error" id="error_email3"> invalid email adress.</label>
                                     <input class="form-control" id="email" placeholder="E-mail" name="email" type="email" autofocus>
-                                </div> 
+                                </div>
                             </div>
                       </div>
                       <div class="row">
@@ -148,12 +148,13 @@
                                     <select name="role" id="role" class="form-control" >
                                         <option value="0" selected="selected">-- SELECT ROLE --</option>
                                         <option value="admin">Admin</option>
-                                        <option value="user">User</option>
-                                    </select> 
+                                        <option value="student">Peserta Didik</option>
+                                        <option value="teacher">Verifikator</option>
+                                    </select>
                                 </div>
                             </div>
                       </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
@@ -183,7 +184,7 @@
                                     <label class="error" id="edit-error_name"> field is required.</label>
                                     <label class="error" id="edit-error_name2"> name must be alphanumeric.</label>
                                     <input class="form-control" id="edit-name" placeholder="Name" name="edit-name" type="text" autofocus>
-                                </div> 
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -192,7 +193,7 @@
                                     <label class="error" id="edit-error_email2"> email has already exist.</label>
                                     <label class="error" id="edit-error_email3"> invalid email adress.</label>
                                     <input class="form-control" id="edit-email" placeholder="E-mail" name="edit-email" type="email" autofocus>
-                                </div> 
+                                </div>
                             </div>
                       </div>
                       <div class="row">
@@ -201,11 +202,11 @@
                                     <label>Role</label>&nbsp;&nbsp;
                                     <label class="error" id="edit-error_role"> field is required.</label>
                                     <select name="role" id="edit-role" class="form-control" >
-                                    </select> 
+                                    </select>
                                 </div>
                             </div>
                       </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
@@ -217,7 +218,7 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-       
+
         <!-- /#page-wrapper -->
         <?php $this->load->view('frame/footer_view')?>
         <script src="<?=base_url()?>assets/js/view/user_list.js"></script>
