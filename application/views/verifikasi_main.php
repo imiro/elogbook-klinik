@@ -4,12 +4,13 @@
         $tabel = array(
           "id" => "#",
           "tanggal" => "Tanggal",
-          "rs" => "Tempat",
+          "lokasi" => "Tempat",
           "nama" => "Nama Pasien",
           "usia" => "Usia",
+          "nrm" => "NRM",
           "diagnosis" => "Diagnosis",
           "tindakan" => "Tindakan",
-          "kode" => "Kode",
+          "kode" => "Achievement",
           "user_id" => "Oleh",
           "created_at" => "Diinput Tanggal"
         );
@@ -35,7 +36,27 @@
           foreach($allEntry as $entry) {
             echo "<tr>";
             foreach($tabel as $key => $heading) {
-                echo "<td>{$entry[$key]}</td>";
+                if($key == "kode" || $key == "lokasi") {
+                  $arr = array();
+                  if($key == "lokasi")
+                    $arr = array(
+                      "poliklinik" => "Poliklinik",
+                      "ok" => "Ruang Operasi",
+                      "igd" => "Instalasi Gawat Darurat",
+                      "icu" => "Intensive Care Unit"
+                    );
+                  else {
+                    $arr = array(
+                      "1" => "Observasi",
+                      "2" => "Asistensi",
+                      "3" => "Operator dalam Pengawasan",
+                      "4" => "Operator Mandiri",
+                      "5" => "Konsultasi"
+                    );
+                  }
+                  echo "<td>{$arr[$entry[$key]]}</td>";
+                } else
+                  echo "<td>{$entry[$key]}</td>";
             }
 
             // TODO: styling!
