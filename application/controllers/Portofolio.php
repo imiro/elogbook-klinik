@@ -28,6 +28,8 @@ class Portofolio extends CI_Controller {
 			redirect(base_url());
 
 		$this->user = $this->session->userdata('user_id');
+
+		date_default_timezone_set("Asia/Jakarta");
 	}
 
 	public function index()
