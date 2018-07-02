@@ -16,7 +16,7 @@
                     <h3 class="page-header">Dashboard</h3>
                 </div>
                 <div class="col-lg-12">
-                    <div class="row text-center">
+                    <div class="row text-left">
                         Selamat datang di Website Sekolah Sp2 Onkologi Ginekologi Departemen Obstetri dan Ginekologi RSCM! Semua pengumuman akan ditampilkan pada halaman ini. Namun, untuk sekarang Anda dapat memulai menggunakan website ini dengan memilih salah satu pilihan tindakan di sebelah kiri. </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -30,7 +30,7 @@
     <!-- wrapper -->
 
     <!-- Footer -->
-<section class="py-5" style="background:url('assets/img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
         <div class="container give_margin_top">
     <footer class="bg-dark">
       <div class="container text-white">
@@ -38,8 +38,8 @@
           <div class="col-sm-12">
             <h4 class="m-0" style="border-bottom:1px solid #ccc; padding-bottom:5px">For Question and Assistance</h4>
             <div class="row" style="padding-top:1px">
-              <div class="col-sm-6"><img src="assets/img/phone.png" width="20" height="20"> Aji Muharrom</div>
-              <div class="col-sm-6"><img src="assets/img/phone.png" width="20" height="20"> Kevin Yonathan</div>
+              <div class="col-sm-6"><a href="https://api.whatsapp.com/send?phone=6282229248611&teks=Halo+boleh+bantu+soal+website+onkogyn"> <img src="assets/images/phone.png" width="20" height="20"> Aji Muharrom </a> </div>
+              <div class="col-sm-6"><a href="https://api.whatsapp.com/send?phone=6285860337688&teks=Halo+boleh+bantu+soal+website+onkogyn"><img src="assets/images/phone.png" width="20" height="20"> Kevin Yonathan</div>
             </div>
           </div>
 

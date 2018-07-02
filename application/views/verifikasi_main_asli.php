@@ -95,8 +95,9 @@
               echo "<a href='" . base_url("verifikasi/acc/{$entry["id"]}") . "' class='btn btn-primary'>Verifikasi</a>";
               echo "<a href='" . base_url("verifikasi/tolak/{$entry["id"]}") . "' class='btn btn-danger'>Tolak Verifikasi</a>";
             }
-            else if ($entry['verified'] > 0) echo "Terverifikasi pada {$entry['verified_at']}";
-            else echo "Verifikasi ditolak pada {$entry['verified_at']}";
+            else if ($entry['verified'] > 0) echo '<p style="color:green"> Terverifikasi pada {$entry['verified_at']} </p>';
+
+            else echo '<p style="color:red"> Verifikasi ditolak pada {$entry['verified_at']} </p>';
 
             echo "</td>";
 

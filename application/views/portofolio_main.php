@@ -61,10 +61,11 @@
 
             // TODO: styling!
             echo "<td>";
-            if (!$entry['verified']) echo 'Menunggu verifikasi';
+            if (!$entry['verified']) echo '<i style="color:yellow">
+              Menunggu Verifikasi </i> ';
             else {
-              if ($entry['verified'] > 0) echo "Terverifikasi pada ";
-              else echo "Verifikasi ditolak pada ";
+              if ($entry['verified'] > 0) echo '<p style="color:green"> Terverifikasi pada  </p> ';
+              else echo '<p style="color:red"> Verifikasi ditolak pada  </p> ';
               echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
             }
             echo "</td>";

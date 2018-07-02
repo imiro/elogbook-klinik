@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="<?=base_url()?>assets/images/codeigniter_logo.png" type="image/x-icon">
 
-    <title>Sekolah OnkoGin- Login</title>
+    <title>Sekolah OnkoGin - Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -30,21 +30,22 @@
 <body>
 <center>           
 
-<section class="py-5" style="background:url('assets/img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
 
-        <div class="container give_margin_top">
-            <table>
-            	<tr>
-            		<td width="20%"> <img src="assets/img/FKUI.png" width=100%> </td>
-            		<td width="60%"> 
-            			<center>
-            			<h1 class="league-spartan">Sekolah Spesialis 2 Onkologi Ginekologi Departemen Obstetri dan Ginekologi RSCM</h1>
-            		<td width="20%"> <img src="assets/img/RSCM.png" width=100%> </td>
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-sm-3"> <img src="assets/images/FKUI.png" width=100%> </div>
+            <div class="col-sm-6"> <center>
+                <h1 class="league-spartan">Sekolah Spesialis 2 Onkologi Ginekologi Departemen Obstetri dan Ginekologi RSCM</h1></center></div>
+            <div class="col-sm-3"> <img src="assets/images/RSCM.png" width=100%> </div>
            </table>
      	</div>
+
 </section>
 
-<section class="py-5" style="background:url('assets/img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+
+
+<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
 
         <div class="container give_margin_top">
             <br>
@@ -52,7 +53,7 @@
             <p align=center style="font-size:0.9em">Pada website ini, anda dapat menuliskan portofolio dan logbook hasil pencapaian klinik anda secara online.</p>
         </div>
 </section>
-<section class="py-5" style="background:url('assets/img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black"><div class="container give_margin_top"> </div></section>
+<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black"><div class="container give_margin_top"> </div></section>
 
 <div class="container">
 	    <div class="row">
@@ -90,7 +91,7 @@
 </center>
 
 <!-- Footer -->
-<section class="py-5" style="background:url('assets/img/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
         <div class="container give_margin_top">
     <footer class="bg-dark">
       <div class="container text-white">
@@ -98,8 +99,8 @@
           <div class="col-sm-12">
             <h4 class="m-0" style="border-bottom:1px solid #ccc; padding-bottom:5px">For Question and Assistance</h4>
             <div class="row" style="padding-top:1px">
-              <div class="col-sm-6"><img src="assets/img/phone.png" width="20" height="20"> Aji Muharrom</div>
-              <div class="col-sm-6"><img src="assets/img/phone.png" width="20" height="20"> Kevin Yonathan</div>
+              <div class="col-sm-6"><a href="https://api.whatsapp.com/send?phone=6282229248611&teks=Halo+boleh+bantu+soal+website+onkogyn"> <img src="assets/images/phone.png" width="20" height="20"> Aji Muharrom </a> </div>
+              <div class="col-sm-6"><a href="https://api.whatsapp.com/send?phone=6285860337688&teks=Halo+boleh+bantu+soal+website+onkogyn"><img src="assets/images/phone.png" width="20" height="20"> Kevin Yonathan</div>
             </div>
           </div>
 
