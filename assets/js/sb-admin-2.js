@@ -47,12 +47,12 @@
     function show_loading(){
         $('body,html').css('overflow','hidden');
         $("#loading").fadeIn("fast");
-        $(".overlay").fadeIn("fast"); 
+        $(".overlay").fadeIn("fast");
     }
 
     function hide_loading(){
         $("#loading").fadeOut("fast");
-        $(".overlay").fadeOut("fast"); 
+        $(".overlay").fadeOut("fast");
         $('body,html').css('overflow','auto');
     }
 
@@ -68,7 +68,7 @@
             $("#error_currentPassword").show();
             i++;
         }
-        
+
 
         if(newPassword == ""){
             $("#error_newPassword").show();
@@ -102,14 +102,14 @@
                     else{
                         alert("Oops there is something wrong!");
                     }
-                  
+
                 },
                 error: ajax_error_handling
             });
         }else{
             hide_loading();
         }
-            
+
     });
 
 
@@ -130,5 +130,6 @@
         } else {
             alert('Uncaught Error.\n' + jqXHR.responseText);
         }
+        console.log(jqXHR);
         hide_loading();
     }

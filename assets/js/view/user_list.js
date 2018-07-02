@@ -1,4 +1,4 @@
-    
+
     window.onload = hideErrorMessages();
 
     function hideErrorMessages(){
@@ -55,7 +55,10 @@
     function deactivate_submit(email,id){
         show_loading();
             $.ajax({
-            url: $("#base-url").val()+"admin/deactivate_user/"+email+"/"+id,
+            // url: $("#base-url").val()+"admin/deactivate_user/"+email+"/"+id,
+            method: "POST",
+            url: $("#base-url").val()+"admin/deactivate_user/"+id,
+            data: {email: email, id: id},
             cache: false,
             success: function (result) {
                 var result = $.parseJSON(result);
@@ -200,14 +203,12 @@
                     else{
                         alert("Oops there is something wrong!");
                     }
-                  
+
                 },
                 error: ajax_error_handling
             });
         }else{
             hide_loading();
         }
-            
+
     });
-
-

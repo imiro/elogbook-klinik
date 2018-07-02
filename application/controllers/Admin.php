@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 
         $this->load->model('admin_model');
     }
-    
+
 
     private function ajax_checking(){
         if (!$this->input->is_ajax_request()) {
@@ -68,9 +68,21 @@ class Admin extends CI_Controller {
         echo json_encode($update);
     }
 
-    function deactivate_user($email,$id){
+    // function deactivate_user($email,$id){
+    //     $this->ajax_checking();
+    //
+    //     $update = $this->admin_model->deactivate_user($email,$id);
+    //     if($update['status'] == 'success')
+    //         $this->session->set_flashdata('success', 'User '.$email.' has been successfully deleted!');
+    //
+    //     echo json_encode($update);
+    // }
+
+    function deactivate_user($id){
         $this->ajax_checking();
 
+        $email = $this->input->post('email');
+        
         $update = $this->admin_model->deactivate_user($email,$id);
         if($update['status'] == 'success')
             $this->session->set_flashdata('success', 'User '.$email.' has been successfully deleted!');
