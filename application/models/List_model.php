@@ -113,7 +113,7 @@ class List_model extends CI_Model {
         }
 
         /*
-         * Given a verificator's Id, mengembalikan array berisi daftar antrian yang belum diverifikasi olehnya
+         * Given a verificator's Id, mengembalikan array berisi daftar entri kegiatan yang belum diverifikasi olehnya
          *
          * @param integer $verifikatorId  - id verifikator
          *
@@ -137,7 +137,13 @@ class List_model extends CI_Model {
           }
         }
 
-        // TODO: limit hasil!
+        // TODO: limit hasil! kalau tabelnya banyak, jebol ini
+        /*
+         * Diberikan id verifikator, mengembalikan array berisi semua row kegiatan yang belum terverifikasi yang berhubungan dengan verifikator tersebut
+         *
+         * @returns array result_array() terkait
+         * @returns boolea false jika data tidak ditemukan
+         */
         public function dapatkanSudahVerifikasi($verifikatorId) {
           $this->db->select('*');
           $this->db->where('verifikator', $verifikatorId);
@@ -153,6 +159,14 @@ class List_model extends CI_Model {
           }
         }
 
+        /*
+         * Diberikan id seorang verifikator, mengembalikan daftar semua row dari tabel 'kegiatan' yang berasosiasi dengan verifikator tersebut.
+         *
+         * @param integer $verfikatorId - id dari verifikator terkait
+         *
+         * @returns array "result_array()" berisikan data semua row terkait
+         * @returns boolean false jika data tidak ditemukan
+         */
         public function dapatkanSemuaEntriVerifikator($verifikatorId) {
           $this->db->select('*');
           $this->db->where('verifikator', $verifikatorId);
