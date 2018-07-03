@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'id776123_root',
-	'password' => 'apaajadeh',
-	'database' => 'id776123_elogbook',
+	'username' => 'imiroid1_user1',
+	'password' => 'i=D$gA{pExx0',
+	'database' => 'imiroid1_elogbook',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'el_',
 	'pconnect' => FALSE,
@@ -94,3 +94,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+

@@ -18,10 +18,12 @@
                 <div class="col-lg-12">
                     <div class="row text-left">
                         Selamat datang di Website Sekolah Sp2 Onkologi Ginekologi Departemen Obstetri dan Ginekologi RSCM! Semua pengumuman akan ditampilkan pada halaman ini. Namun, untuk sekarang Anda dapat memulai menggunakan website ini dengan memilih salah satu pilihan tindakan di sebelah kiri. </div>
+  <p style="text-align: left"><a href="<?php echo base_url('portofolio');?>" >Halaman Portofolio</a></p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+
 
         </div>
         <!-- /#page-wrapper -->
@@ -46,7 +48,7 @@
           <div class="col-sm-12">
             <br>
             <p class="m-0 text-center text-white" style="text-align:right"><strong>Sekolah Sp2 Onkologi Ginekologi Dept Obsgin RSCM</strong></p>
-
+	<p style="text-align: left"><a href="<?php echo base_url().'dashboard';?>" >Halaman Portofolio</a></p>
           </div>
         </div>
       </div>

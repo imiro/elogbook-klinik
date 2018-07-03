@@ -23,9 +23,13 @@ class Portofolio extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('list_model');
-
+		
+		
 		if(!$this->session->userdata('logged_in'))
 			redirect(base_url());
+		
+		if($this->session->userdata('role') == "teacher")
+			redirect(base_url('verifikasi'));
 
 		$this->user = $this->session->userdata('user_id');
 

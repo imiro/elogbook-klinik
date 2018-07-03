@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'elogbook',
+	'username' => 'imiroid1_user1',
+	'password' => 'i=D$gA{pExx0',
+	'database' => 'imiroid1_elogbook',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'el_',
 	'pconnect' => FALSE,

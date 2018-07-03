@@ -7,6 +7,9 @@
                         <li>
                             <a href="<?=base_url()?>"><i class="fa fa-home fa-fw"></i> Dashboard</a>
                         </li>
+<li>
+                            <a href="<?=base_url('portofolio')?>"><i class="fa fa-university fa-fw"></i> Portofolio</a>
+                        </li>
                         <?php if($this->session->userdata('role') == 'admin'): ?>
                             <li>
                                 <a href="#"><i class="fa fa-user fa-fw"></i> Administrator<span class="fa arrow"></span></a>
@@ -16,7 +19,7 @@
                                 </ul>
                             </li>
                         <?php endif; ?>
-                        <li>
+                        <li style='display: none;'>
                             <a href="#"><i class="fa fa-user fa-fw"></i> Other Menu Sample<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li> <a href="#">&raquo; Other Sub Menu 1</a> </li>

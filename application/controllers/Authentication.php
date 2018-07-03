@@ -36,9 +36,9 @@ class Authentication extends CI_Controller {
     private function goto_landing() {
       switch($this->session->userdata('role')) {
         case "admin": redirect(base_url("dashboard")); break;
-        case "teacher": redirect(base_url("verifikasi")); break;
+        case "teacher": redirect(base_url("dashboard")); break;
         case "student":
-        default: redirect(base_url("portofolio"));
+        default: redirect(base_url("dashboard"));
       }
     }
 
