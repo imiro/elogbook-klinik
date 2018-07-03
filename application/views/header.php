@@ -49,7 +49,7 @@
               <?php } else { $user = $this->session->userdata('name'); ?>
                 <li>
                 <a style="color: black;">
-                Logged in as <strong><?php echo $user; ?></strong>.
+                Logged in as <strong><?php echo $user . " (" . ($this->session->userdata('role') == "teacher" ? "Supervisor" : "Peserta Didik") . ")"; ?></strong>.
                 </a>
                 </li>
                 <li>

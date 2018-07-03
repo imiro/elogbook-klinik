@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Organization Name</title>
+    <title>Sekolah Onkogin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
     <link rel="shortcut icon" href="<?=base_url()?>assets/images/codeigniter_logo.png" type="image/x-icon">
     <link href="<?=base_url()?>assets/js/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="<?=base_url()?>assets/js/jquery-ui-1.11.4.custom/jquery-ui-custom-datepicker.css" rel="stylesheet" type="text/css" />
-    
+
     <input type="hidden"  id="base-url" value="<?=base_url()?>"/>
 </head>
 
@@ -51,12 +51,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<?=base_url();?>">
-                    <div class="inline"> &nbsp;Organization Name </div>
+                    <div class="inline"> &nbsp;Sekolah Onkogin </div>
                 </a>
 
             </div>
             <!-- /.navbar-header -->
-            
+
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a  id="header-dropdown" class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -71,7 +71,7 @@
                 </li>
                 <!-- /.dropdown -->
             </ul>
-            <div class=" navbar-brand navbar-right navbar-access-level"> 
+            <div class=" navbar-brand navbar-right navbar-access-level">
                 Access Level: <?=ucfirst($this->session->userdata('role'));?>
                 &nbsp;
             </div>
@@ -99,7 +99,7 @@
                                     <label>Current Password</label> &nbsp;&nbsp;
                                     <label class="error" id="error_currentPassword"> field is required.</label>
                                     <input class="form-control" id="currentPassword" placeholder="Current Password" name="currentPassword" type="password" autofocus>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -109,16 +109,16 @@
                                     <label class="error" id="error_newPassword"> field is required.</label>
                                     <label class="error" id="error_newPassword2"> password not match</label>
                                     <input class="form-control" id="newPassword" placeholder="New Password" name="newPassword" type="password" autofocus>
-                                </div> 
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Confirm New Password</label> &nbsp;&nbsp;
                                     <input class="form-control" id="confirmNewPassword" placeholder="Confirm New Password" name="confirmNewPassword" type="password" autofocus>
-                                </div> 
+                                </div>
                             </div>
                       </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
