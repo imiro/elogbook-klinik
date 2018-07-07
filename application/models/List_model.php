@@ -52,16 +52,29 @@ class List_model extends CI_Model {
           return $rowId;
         }
 
-        public function drop_entry($rowId) {
+        public function drop_entry($rowId, $userId) {
           $this->load->dbforge();
 
           // delete entry tsb berdasarkan id
-          $this->db->delete('kegiatan', array('id' => $rowId));
+          $this->db->where('id', $rowId)
+                   ->where('user_id', $userId);
+
+          if( !$this->db->delete('kegiatan') )
+            return false;
+          else
+            return true;
         }
 
         public function get_entries($user_id) {
           // TODO: limit to top 10 ?
           $query = $this->db->get_where('kegiatan', array('user_id' => $user_id));
+          return $query->result_array();
+        }
+
+        public function getEntryById($rowId) {
+          $query = $this->db->get_where('kegiatan', array('id' => $rowId));
+
+          if( $query->num_rows() != 1 ) return false;
           return $query->result_array();
         }
 

@@ -122,42 +122,39 @@
         </div>
       </div>
 
+      <script src="<?php echo base_url("assets/js/modal_verifikasi.js"); ?>" ></script>
       <script type="text/javascript">
 
-      function generate_body(elem) {
-        var konten = [], heading = [];
-        $(elem).closest('tr').find('td').not('.action_cell').each(function() {
-          konten.push( $(this).html() );
-        });
-        $(elem).closest('table').find('th').not('.action_cell').each(function() {
-          heading.push( $(this).html() );
-        })
-
-        var ret = "<p>";
-        for(var i = 0;i < konten.length;++i) {
-          ret += "<b>" + heading[i] + ": </b>" + konten[i] + "<br/>";
-        }
-        ret += "</p>";
-
-        return ret;
-      }
-
       function verify_confirmation(url, elem) {
-
-        $("#modalKonfirmasiVerifikasi .modal-body").html(
-          "<p>Yakin akan memverifikasi entri ini? </p><br/>\n" +
-          generate_body(elem)
-        );
-
-        $("#modalKonfirmasiVerifikasi .verifikasi").attr("href", url);
+        modal_confirmation(
+            "#modalKonfirmasiVerifikasi",
+            "<p>Yakin akan memverifikasi entri ini? </p><br/>\n",
+            url, elem);
       }
 
       function tolak_confirmation(url, elem) {
-        $("#modalKonfirmasiTolak .modal-body").html(
-          "<p>Yakin akan <b>menolak verifikasi</b> entri ini? </p><br/>\n" +
-          generate_body(elem)
-        );
-
-        $("#modalKonfirmasiTolak .verifikasi").attr("href", url);
+      modal_confirmation(
+            "#modalKonfirmasiTolak",
+            "<p>Yakin akan <b>menolak verifikasi</b> entri ini? </p><br/>\n",
+            url, elem );
       }
+
+      // function verify_confirmation(url, elem) {
+      //
+      //   $("#modalKonfirmasiVerifikasi .modal-body").html(
+      //     "<p>Yakin akan memverifikasi entri ini? </p><br/>\n" +
+      //     generate_body(elem)
+      //   );
+      //
+      //   $("#modalKonfirmasiVerifikasi .verifikasi").attr("href", url);
+      // } // ASLI
+
+      // function tolak_confirmation(url, elem) {
+      //   $("#modalKonfirmasiTolak .modal-body").html(
+      //     "<p>Yakin akan <b>menolak verifikasi</b> entri ini? </p><br/>\n" +
+      //     generate_body(elem)
+      //   );
+      //
+      //   $("#modalKonfirmasiTolak .verifikasi").attr("href", url);
+      // }
       </script>

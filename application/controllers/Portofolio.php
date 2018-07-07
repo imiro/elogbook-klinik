@@ -23,11 +23,11 @@ class Portofolio extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('list_model');
-		
-		
+
+
 		if(!$this->session->userdata('logged_in'))
 			redirect(base_url());
-		
+
 		if($this->session->userdata('role') == "teacher")
 			redirect(base_url('verifikasi'));
 
@@ -65,5 +65,19 @@ class Portofolio extends CI_Controller {
 
 		$this->load->view('header');
 		$this->load->view('portofolio_main', $viewData);
+	}
+
+	public function delete($id) {
+		$cek = $this->list_model->getEntryById($id);
+
+		if( $cek && $cek[0]['user_id'] == $this->user &&
+				!$cek[0]['verified'] && // kalo udah diverifikasi atau ditolak, ga boleh dihapus
+		 		$this->list_model->drop_entry($id, $this->user) ) {
+			header("refresh: 2;url = " . base_url("portofolio"));
+			echo "<strong>Entri {$id}</strong> berhasil dihapus! Mengalihkan Anda ke halaman <a href='". base_url('portofolio')."' >E-Portofolio</a>";
+		} else {
+			redirect(base_url("portofolio"));
+			echo "Operasi gagal!";
+		}
 	}
 }
