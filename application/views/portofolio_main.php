@@ -1,3 +1,4 @@
+      <?php if($this->session->userdata('role') == "student") { ?>
       <form class="form-inline text-center" id="formTambah" action="" method="post">
         <input type="text" id="datepicker" name="tanggal" value="<?php echo date('Y-m-d'); ?>" class="form-control" placeholder="Tanggal"/>
         <input type="text" name="nama" value="" class='form-control' placeholder="Nama pasien" />
@@ -26,6 +27,7 @@
         </select>
         <input  type="button" data-toggle="modal" data-target="#modalKonfirmasiTambah" value="Tambah" class="btn btn-primary" />
       </form>
+      <?php } ?>
 
       <div class="row"> <!-- untuk tabel -->
         <table class='table'>
@@ -44,6 +46,23 @@
               "verifikator" => "Verifikator",
               "created_at" => "Diinput Tanggal"
             );
+
+            if($this->session->userdata('role') == "admin") {
+              $tabel = array(
+                "id" => "#",
+                'user_id' => "Oleh",
+                "tanggal" => "Tanggal",
+                "lokasi" => "Tempat",
+                "nama" => "Nama Pasien",
+                "usia" => "Usia",
+                "nrm" => "NRM",
+                "diagnosis" => "Diagnosis",
+                "tindakan" => "Tindakan",
+                "kode" => "Achievement",
+                "verifikator" => "Verifikator",
+                "created_at" => "Diinput Tanggal"
+              );
+            }
 
             foreach($tabel as $key => $heading) {
               echo "<th>$heading</th>\n";

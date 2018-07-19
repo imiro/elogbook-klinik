@@ -71,6 +71,13 @@ class List_model extends CI_Model {
           return $query->result_array();
         }
 
+        public function getAllEntries() {
+          $this->db->select('*');
+          $this->db->from('kegiatan');
+          $query = $this->db->get();
+          return $query->result_array();
+        }
+
         public function getEntryById($rowId) {
           $query = $this->db->get_where('kegiatan', array('id' => $rowId));
 

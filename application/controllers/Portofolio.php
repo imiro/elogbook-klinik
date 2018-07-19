@@ -57,10 +57,17 @@ class Portofolio extends CI_Controller {
 		}
 
 		$viewData['user'] = $this->session->userdata('name');
-		$viewData['allEntry'] = $this->list_model->get_entries($this->user);
+		$viewData['allEntry'] =
+			$this->session->userdata('role') == "admin" ?
+				$this->list_model->getAllEntries() :
+				$this->list_model->get_entries($this->user);
+
 		foreach($viewData['allEntry'] as &$row) {
 			$row['verifikator'] = $this->list_model->getNameById($row['verifikator']);
+			if($this->session->userdata('role') == "admin")
+				$row['user_id'] = $this->list_model->getNameById($row['user_id']);
 		}
+
 		$viewData['verificators'] = $this->list_model->listVerificators();
 
 		$this->load->view('header');
