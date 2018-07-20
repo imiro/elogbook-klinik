@@ -61,7 +61,7 @@ class Verifikasi extends CI_Controller {
 			$this->load->view('verifikasi_main', $viewData);
 		}
 
-		$viewData['title'] = "Lainnya";
+		$viewData['title'] = "Sudah Diproses";
 		$viewData['lastheading'] = "Status";
 		$viewData['allEntry'] = $this->list_model->dapatkanSudahVerifikasi($this->session->userdata('user_id'));
 		if($viewData['allEntry']) {
@@ -80,6 +80,7 @@ class Verifikasi extends CI_Controller {
 		}
 
 		if($this->list_model->verifyById($index, $this->user, 1)) {
+			$this->session->set_flashdata('success', "<strong>Entri #{$index}</strong> berhasil diverifikasi!");
 			header("refresh: 5;url = " . base_url("verifikasi"));
 			echo "<b>Entri {$index}</b> berhasil diverifikasi! Anda akan diarahkan kembali secara otomatis ke halaman Daftar Verifikasi..";
 			echo "\n<br/>Jika pengarahan otomatis tidak berhasil, klik <a href='" . base_url("verifikasi") . "'>di sini</a>";
@@ -92,6 +93,7 @@ class Verifikasi extends CI_Controller {
 		}
 
 		if($this->list_model->verifyById($index, $this->user, -1)) {
+			$this->session->set_flashdata('success', "Berhasil menolak verifikasi <strong>entri #{$index}</strong>");
 			header("refresh: 5;url = " . base_url("verifikasi"));
 			echo "Berhasil menolak verifikasi <b>Entri {$index}</b>! Anda akan diarahkan kembali secara otomatis ke halaman Daftar Verifikasi..";
 			echo "\n<br/>Jika pengarahan otomatis tidak berhasil, klik <a href='" . base_url("verifikasi") . "'>di sini</a>";

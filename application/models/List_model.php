@@ -49,6 +49,9 @@ class List_model extends CI_Model {
 
           $rowId = $this->db->insert_id();
 
+          if( $rowId )
+            $this->session->set_flashdata('success', "Berhasil menambahkan entri baru! <strong>#{$rowId}</strong>");
+
           return $rowId;
         }
 

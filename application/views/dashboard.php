@@ -32,7 +32,7 @@
     <!-- wrapper -->
 
     <!-- Footer -->
-<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID black">
         <div class="container give_margin_top">
     <footer class="bg-dark">
       <div class="container text-white">
@@ -48,16 +48,8 @@
           <div class="col-sm-12">
             <br>
             <p class="m-0 text-center text-white" style="text-align:right"><strong>Sekolah Sp2 Onkologi Ginekologi Dept Obsgin RSCM</strong></p>
-	<p style="text-align: left"><a href="<?php echo base_url().'dashboard';?>" >Halaman Portofolio</a></p>
           </div>
         </div>
       </div>
 </section>
       <!-- /.container -->
-            
-
-
-
-
-
-

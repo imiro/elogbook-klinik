@@ -17,6 +17,19 @@
 
       ?>
       <!-------------------------------------------------------------------->
+      <?php if($this->session->flashdata('success')):?>
+          &nbsp;<div class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <?php echo $this->session->flashdata('success'); ?>
+          <?php $this->session->set_flashdata('success', NULL); ?>
+          </div>
+      <?php elseif($this->session->flashdata('error')):?>
+          &nbsp;<div class="alert alert-warning">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <strong><?php echo $this->session->flashdata('error'); ?></strong>
+          </div>
+      <?php endif;?>
+
       <div class="row">
         <h2 style="text-align: center"><?php echo $title; ?></h2>
       </div>
