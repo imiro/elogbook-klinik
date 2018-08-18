@@ -62,11 +62,13 @@ class Portofolio extends CI_Controller {
 				$this->list_model->getAllEntries() :
 				$this->list_model->get_entries($this->user);
 
-		foreach($viewData['allEntry'] as &$row) {
-			$row['verifikator'] = $this->list_model->getNameById($row['verifikator']);
-			if($this->session->userdata('role') == "admin")
-				$row['user_id'] = $this->list_model->getNameById($row['user_id']);
-		}
+
+		// foreach($viewData['allEntry'] as &$row) {
+		// 	$row['verifikator'] = $this->list_model->getNameById($row['verifikator']);
+		// 	if($this->session->userdata('role') == "admin")
+		// 		$row['user_id'] = $this->list_model->getNameById($row['user_id']);
+		// }
+		$this->entriesGetNames($viewData['allEntry']);
 
 		$viewData['verificators'] = $this->list_model->listVerificators();
 
@@ -85,6 +87,52 @@ class Portofolio extends CI_Controller {
 		} else {
 			redirect(base_url("portofolio"));
 			echo "Operasi gagal!";
+		}
+	}
+
+	public function csv() {
+		if($this->session->userdata("role") != "admin") { // TODO: can teacher do this to?
+			return $this->index();
+		}
+
+		$entries = $this->list_model->getAllEntries();
+
+		$kode_label = array(1 => "Observasi",
+												2 => "Asistensi",
+												3 => "Operator dalam Pengawasan",
+												4 => "Operator Mandiri",
+												5 => "Konsultasi");
+
+		$this->entriesGetNames($entries);
+		foreach($entries as &$entry) {
+			$entry['verified_at'] = date( 'Y-m-d H:i:s', $entry['verified_at'] );
+			$entry['kode'] = $kode_label[ $entry['kode'] ];
+		}
+
+		// START WRITING CSV
+		header("Content-type: application/csv");
+    header("Content-Disposition: attachment; filename=\"sekolahOnkogyn-".date('Ymd-His').".csv\"");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+
+    $handle = fopen('php://output', 'w');
+
+		if(count($entries))
+			fputcsv($handle, array_keys($entries[0]), ';');
+
+    foreach ($entries as $data) {
+        fputcsv($handle, $data, ';');
+    }
+
+		fclose($handle);
+    exit;
+	}
+
+	private function entriesGetNames(&$viewData) {
+		foreach($viewData as &$row) {
+			$row['verifikator'] = $this->list_model->getNameById($row['verifikator']);
+			if($this->session->userdata('role') == "admin")
+				$row['user_id'] = $this->list_model->getNameById($row['user_id']);
 		}
 	}
 }

@@ -41,6 +41,12 @@
       </form>
       <?php } ?>
 
+      <?php if($this->session->userdata('role') == 'admin') { ?>
+      <div class="row text-center">
+        <a href="<?php echo base_url('portofolio/csv'); ?>" class="btn btn-primary"><i class="fa fa-download fa-fw"></i>Unduh sebagai .csv</a>
+      </div>
+      <?php } ?>
+
       <div class="row"> <!-- untuk tabel -->
         <table class='table'>
           <thead>
