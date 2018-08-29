@@ -105,11 +105,11 @@
 
             // TODO: styling!
             echo "<td>";
-            if (!$entry['verified']) echo '<i style="color:yellow">
-              Menunggu Verifikasi </i> ';
+            if (!$entry['verified']) echo '<span class="label label-warning">
+              <i class="glyphicon glyphicon-time"> </i> Menunggu Verifikasi </span> ';
             else {
-              if ($entry['verified'] > 0) echo '<p style="color:green"> Terverifikasi pada  </p> ';
-              else echo '<p style="color:red"> Verifikasi ditolak pada  </p> ';
+              if ($entry['verified'] > 0) echo '<p> <span class="label label-success"><i class="glyphicon glyphicon-ok"> </i> Terverifikasi</span> pada  </p> ';
+              else echo '<p> <span class="label label-danger"><i class="glyphicon glyphicon-remove"> </i> Verifikasi ditolak</span> pada  </p> ';
               echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
             }
             echo "</td>";

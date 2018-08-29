@@ -28,7 +28,7 @@
 </head>
 
 <body>
-<center>           
+<center>
 
 <section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
 
@@ -53,7 +53,7 @@
             <p align=center style="font-size:0.9em">Pada website ini, anda dapat menuliskan portofolio dan logbook hasil pencapaian klinik anda secara online.</p>
         </div>
 </section>
-<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black"><div class="container give_margin_top"> </div></section>
+<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID black"><div class="container give_margin_top"> </div></section>
 
 <div class="container">
 	    <div class="row">
@@ -91,7 +91,7 @@
 </center>
 
 <!-- Footer -->
-<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID "black">
+<section class="py-5" style="background:url('assets/images/grey.jpeg'); background-size:cover; color:black; border-top:2px SOLID black">
         <div class="container give_margin_top">
     <footer class="bg-dark">
       <div class="container text-white">
@@ -113,7 +113,7 @@
       </div>
 </section>
       <!-- /.container -->
-	
+
 
 
     <!-- jQuery -->

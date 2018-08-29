@@ -81,8 +81,8 @@
               echo "<a href='#' onclick=\"tolak_confirmation('" . base_url("verifikasi/tolak/{$entry["id"]}") . "', this)\" class='btn btn-danger' data-toggle='modal' data-target='#modalKonfirmasiTolak'>Tolak Verifikasi</a>";
             }
             else {
-              if ($entry['verified'] > 0) echo "Terverifikasi pada ";
-              else echo "Verifikasi ditolak pada ";
+              if ($entry['verified'] > 0) echo "<span class='label label-success'><i class='glyphicon glyphicon-ok'> </i> Terverifikasi</span> pada ";
+              else echo "<span class='label label-danger'><i class='glyphicon glyphicon-remove'> </i> Verifikasi ditolak</span> pada ";
               echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
             }
 

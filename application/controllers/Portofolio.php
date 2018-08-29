@@ -53,7 +53,7 @@ class Portofolio extends CI_Controller {
 			// date_default_timezone_set('Asia/Jakarta');
 			// $data['tanggal'] = date('Y-m-d');
 
-			$this->list_model->new_entry($data);
+			$this->list_model->new_entry($data); // TODO: what if this operation failed?
 		}
 
 		$viewData['user'] = $this->session->userdata('name');
@@ -82,7 +82,8 @@ class Portofolio extends CI_Controller {
 		if( $cek && $cek[0]['user_id'] == $this->user &&
 				!$cek[0]['verified'] && // kalo udah diverifikasi atau ditolak, ga boleh dihapus
 		 		$this->list_model->drop_entry($id, $this->user) ) {
-			header("refresh: 2;url = " . base_url("portofolio"));
+			$this->session->set_flashdata('success', "<strong>Entri #{$id}</strong> berhasil dihapus!");
+			header("refresh: 1;url = " . base_url("portofolio"));
 			echo "<strong>Entri {$id}</strong> berhasil dihapus! Mengalihkan Anda ke halaman <a href='". base_url('portofolio')."' >E-Portofolio</a>";
 		} else {
 			redirect(base_url("portofolio"));
