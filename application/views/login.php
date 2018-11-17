@@ -28,7 +28,7 @@
 </head>
 
 <body>
-<center>           
+<center>
 
   <div class="limiter">
     <div class="container-login100">
@@ -39,7 +39,7 @@
           </span>
         </div>
 
-        <form class="login100-form validate-form">
+        <form class="login100-form validate-form"  action="<?=base_url()?>authentication/login/" method="POST" >
           <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
             <span class="label-input100">Username</span>
             <input class="form-control" id="email" placeholder="E-mail" name="email" type="email" autofocus>
@@ -62,7 +62,7 @@
             </div>
 
           <br>
-            
+
             <a href="#" onclick="alert('Please contact the administrator to reset your password!')"> Forgot Password? </a><br><br>
 
           </div>
@@ -102,7 +102,7 @@
       </div>
 </section>
       <!-- /.container -->
-	
+
 
 
     <!-- jQuery -->
