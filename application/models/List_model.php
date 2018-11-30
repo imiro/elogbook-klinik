@@ -70,7 +70,11 @@ class List_model extends CI_Model {
 
         public function get_entries($user_id) {
           // TODO: limit to top 10 ?
-          $query = $this->db->get_where('kegiatan', array('user_id' => $user_id));
+          $this->db->select('*')->from('kegiatan')
+                   ->where('user_id',$user_id)
+                   ->order_by('verified','ASC');
+          $query = $this->db->get();
+          // $query = $this->db->get_where('kegiatan', array('user_id' => $user_id));
           return $query->result_array();
         }
 
@@ -139,13 +143,15 @@ class List_model extends CI_Model {
          * Given a verificator's Id, mengembalikan array berisi daftar entri kegiatan yang belum diverifikasi olehnya
          *
          * @param integer $verifikatorId  - id verifikator
+         * @param integer $start - mulai dari entri dengan indeks >= $start (default: 0)
+         * @param integer $n     - berapa banyak row yang dikembalikan (default: 0 = unlimited)
          *
-         * @return array
+         * @returns array result_array() terkait
          *
          * ## THIS IS A GOOD PRACTICE FOLLOWING phpDocumentor's guidelines
          */
          // TODO: limit hasil!
-        public function dapatkanAntrianVerifikasi($verifikatorId) {
+        public function dapatkanAntrianVerifikasi($verifikatorId, $start = 0, $n = 0) {
           $this->db->select('*');
           $this->db->where('verifikator', $verifikatorId);
           $this->db->where('verified', 0); // dapatkan yang belum diverifikasi saja
@@ -162,10 +168,10 @@ class List_model extends CI_Model {
 
         // TODO: limit hasil! kalau tabelnya banyak, jebol ini
         /*
-         * Diberikan id verifikator, mengembalikan array berisi semua row kegiatan yang belum terverifikasi yang berhubungan dengan verifikator tersebut
+         * Diberikan id verifikator, mengembalikan array berisi semua row kegiatan yang sudah terverifikasi yang berhubungan dengan verifikator tersebut
          *
          * @returns array result_array() terkait
-         * @returns boolea false jika data tidak ditemukan
+         * @returns boolean false jika data tidak ditemukan
          */
         public function dapatkanSudahVerifikasi($verifikatorId) {
           $this->db->select('*');
@@ -232,24 +238,6 @@ class List_model extends CI_Model {
           $this->db->set('title', $judul);
           $this->db->where('id', $idKategori);
           $this->db->update('categories');
-        }
-
-
-        public function get_voters()
-        {
-            $query = $this->db->get('user_details');
-            return $query->result();
-        }
-
-        public function set_voter_legit($username, $val)
-        {
-          $this->db->where('username', $username);
-          $this->db->set('is_legit', $val ? 1 : 0);
-          $this->db->update('user_details');
-
-          $this->db->where('username', $username);
-          $this->db->set('is_legit', $val ? 1 : 0);
-          $this->db->update('users');
         }
 
         /*

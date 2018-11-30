@@ -33,6 +33,7 @@
       <div class="row">
         <h2 style="text-align: center"><?php echo $title; ?></h2>
       </div>
+      
       <div class="row"> <!-- untuk tabel -->
         <table class='table'>
           <thead>

@@ -29,7 +29,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<nav class="navbar navbar-default" role="navigation">
@@ -65,3 +65,14 @@
 					</nav>
 				</div>
 			</div> <!-- end of .row -->
+      <?php if($this->session->flashdata('success')):?>
+          &nbsp;<div class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <?php echo $this->session->flashdata('success'); ?>
+          </div>
+      <?php endif; if($this->session->flashdata('error')):?>
+          &nbsp;<div class="alert alert-warning">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <strong><?php echo $this->session->flashdata('error'); ?></strong>
+          </div>
+      <?php endif;?>

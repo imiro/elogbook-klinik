@@ -58,7 +58,7 @@ class Verifikasi extends CI_Controller {
 			foreach($viewData['allEntry'] as &$row) {
 				$row['user_id'] = $this->list_model->getNameById($row['user_id']);
 			}
-			$this->load->view('verifikasi_main', $viewData);
+			$this->load->view('portofolio/list', $viewData);
 		}
 
 		$viewData['title'] = "Sudah Diproses";
@@ -68,10 +68,10 @@ class Verifikasi extends CI_Controller {
 			foreach($viewData['allEntry'] as &$row) {
 				$row['user_id'] = $this->list_model->getNameById($row['user_id']);
 			}
-			$this->load->view('verifikasi_main', $viewData);
+			$this->load->view('portofolio/list', $viewData);
 		}
 
-		$this->load->view('footer');
+		$this->load->view('portofolio/end_of');
 	}
 
 	public function acc($index = NULL) {

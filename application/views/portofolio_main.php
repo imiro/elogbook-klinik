@@ -1,3 +1,4 @@
+l      <!-- ALERTS -->
       <?php if($this->session->flashdata('success')):?>
           &nbsp;<div class="alert alert-success">
           <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -10,6 +11,7 @@
           </div>
       <?php endif;?>
 
+      <!-- FORM to ADD ITEM -->
       <?php if($this->session->userdata('role') == "student") { ?>
       <form class="form-inline text-center" id="formTambah" action="" method="post">
         <input type="text" id="datepicker" name="tanggal" value="<?php echo date('Y-m-d'); ?>" class="form-control" placeholder="Tanggal"/>
@@ -40,85 +42,133 @@
         <input  type="button" data-toggle="modal" data-target="#modalKonfirmasiTambah" value="Tambah" class="btn btn-primary" />
       </form>
       <?php } ?>
+      <!-- END OF: FORM to ADD ITEM -->
 
       <?php if($this->session->userdata('role') == 'admin') { ?>
       <div class="row text-center">
         <a href="<?php echo base_url('portofolio/csv'); ?>" class="btn btn-primary"><i class="fa fa-download fa-fw"></i>Unduh sebagai .csv</a>
       </div>
-      <?php } ?>
+      <?php }
 
-      <div class="row"> <!-- untuk tabel -->
-        <table class='table'>
-          <thead>
+      $tabel = array(
+        "id" => "#",
+        "tanggal" => "Tanggal",
+        "lokasi" => "Tempat",
+        "nama" => "Nama Pasien",
+        "usia" => "Usia",
+        "nrm" => "NRM",
+        "diagnosis" => "Diagnosis",
+        "tindakan" => "Tindakan",
+        "kode" => "Achievement",
+        "verifikator" => "Verifikator",
+        "created_at" => "Diinput Tanggal"
+      );
+
+      if($this->session->userdata('role') == "admin") {
+        $tabel = array(
+          "id" => "#",
+          'user_id' => "Oleh",
+          "tanggal" => "Tanggal",
+          "lokasi" => "Tempat",
+          "nama" => "Nama Pasien",
+          "usia" => "Usia",
+          "nrm" => "NRM",
+          "diagnosis" => "Diagnosis",
+          "tindakan" => "Tindakan",
+          "kode" => "Achievement",
+          "verifikator" => "Verifikator",
+          "created_at" => "Diinput Tanggal"
+        );
+      }
+
+      ?>
+
+      <div class="row hidden-xs"> <!-- untuk tabel -->
+        <div class="col-md-12">
+          <table class='table'>
+            <thead>
+              <?php
+              foreach($tabel as $key => $heading) {
+                echo "<th>$heading</th>\n";
+              }
+              ?>
+            </thead>
+
             <?php
-            $tabel = array(
-              "id" => "#",
-              "tanggal" => "Tanggal",
-              "lokasi" => "Tempat",
-              "nama" => "Nama Pasien",
-              "usia" => "Usia",
-              "nrm" => "NRM",
-              "diagnosis" => "Diagnosis",
-              "tindakan" => "Tindakan",
-              "kode" => "Achievement",
-              "verifikator" => "Verifikator",
-              "created_at" => "Diinput Tanggal"
-            );
 
-            if($this->session->userdata('role') == "admin") {
-              $tabel = array(
-                "id" => "#",
-                'user_id' => "Oleh",
-                "tanggal" => "Tanggal",
-                "lokasi" => "Tempat",
-                "nama" => "Nama Pasien",
-                "usia" => "Usia",
-                "nrm" => "NRM",
-                "diagnosis" => "Diagnosis",
-                "tindakan" => "Tindakan",
-                "kode" => "Achievement",
-                "verifikator" => "Verifikator",
-                "created_at" => "Diinput Tanggal"
-              );
-            }
+            foreach($allEntry as $entry) {
+              // tombol delete
+              if( !$entry['verified'] )
+                $entry['id'] .=
+                  "<br/><a href='#' data-toggle='modal' data-target='#modalKonfirmasiHapus' onClick='delete_confirmation(\"" .
+                  base_url("portofolio/delete/".$entry['id']) .
+                  "\", this)'<i class=\"fa fa-trash-o fa-fw\"></i></a>";
 
-            foreach($tabel as $key => $heading) {
-              echo "<th>$heading</th>\n";
+              echo "<tr>";
+              foreach($tabel as $key => $heading) {
+                echo "<td>{$entry[$key]}</td>";
+              }
+
+              // TODO: styling! _the date_
+              echo "<td>";
+              if (!$entry['verified']) echo '<span class="label label-warning">
+                <i class="glyphicon glyphicon-time"> </i> Menunggu Verifikasi </span> ';
+              else {
+                if ($entry['verified'] > 0) echo '<p> <span class="label label-success"><i class="glyphicon glyphicon-ok"> </i> Terverifikasi</span> pada  </p> ';
+                else echo '<p> <span class="label label-danger"><i class="glyphicon glyphicon-remove"> </i> Verifikasi ditolak</span> pada  </p> ';
+                echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
+              }
+              echo "</td>";
+
+              echo "</tr>";
             }
             ?>
-          </thead>
+          </table>
+        </div>
+      </div> <!-- end of .row hidden-xs -->
+      <div class="row visible-xs">
+        <?php foreach($allEntry as $entry) { ?>
+        <div class="col-xs-10">
+          <div class="panel panel-default">
+            <div class="panel-heading"><?php echo "#{$entry['id']}"; ?></div>
+            <table class="table">
+              <?php
+              foreach($tabel as $key => $heading) {
+                if($heading != "#")
+                echo "<tr><td>{$heading}</td><td>{$entry[$key]}</td></td>";
+              }
+              ?>
+              <tr>
+                <td>Status</td>
+                <td>
+                  <?php
+                  if (!$entry['verified']) echo '<span class="label label-warning">
+                    <i class="glyphicon glyphicon-time"> </i> Menunggu Verifikasi </span> ';
+                  else {
+                    if ($entry['verified'] > 0) echo '<p> <span class="label label-success"><i class="glyphicon glyphicon-ok"> </i> Terverifikasi</span> pada  </p> ';
+                    else echo '<p> <span class="label label-danger"><i class="glyphicon glyphicon-remove"> </i> Verifikasi ditolak</span> pada  </p> ';
+                    echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
+                  }
+                  ?>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="btn-group-vertical" role="group">
+             <button type="button" class="btn btn-success" alt="Setujui Verifikasi"><i class="fa fa-check fa-fw"></i></button>
+             <button type="button" class="btn btn-danger" alt="Tolak Verifikasi"><i class="fa fa-times fa-fw"></i></button>
+             <button type="button" class="btn btn-default"><i class="fa fa-trash fa-fw"></i></button>
+           </div>
 
-          <?php
-
-          foreach($allEntry as $entry) {
-            // tombol delete
-            if( !$entry['verified'] )
-              $entry['id'] .=
-                "<br/><a href='#' data-toggle='modal' data-target='#modalKonfirmasiHapus' onClick='delete_confirmation(\"" .
-                base_url("portofolio/delete/".$entry['id']) .
-                "\", this)'<i class=\"fa fa-trash-o fa-fw\"></i></a>";
-
-            echo "<tr>";
-            foreach($tabel as $key => $heading) {
-              echo "<td>{$entry[$key]}</td>";
-            }
-
-            // TODO: styling!
-            echo "<td>";
-            if (!$entry['verified']) echo '<span class="label label-warning">
-              <i class="glyphicon glyphicon-time"> </i> Menunggu Verifikasi </span> ';
-            else {
-              if ($entry['verified'] > 0) echo '<p> <span class="label label-success"><i class="glyphicon glyphicon-ok"> </i> Terverifikasi</span> pada  </p> ';
-              else echo '<p> <span class="label label-danger"><i class="glyphicon glyphicon-remove"> </i> Verifikasi ditolak</span> pada  </p> ';
-              echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
-            }
-            echo "</td>";
-
-            echo "</tr>";
-          }
-          ?>
-        </table>
-      </div>
+           <div class="btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default" alt="Sebelumnya"><i class="fa fa-caret-up fa-fw"></i></button>
+              <button type="button" class="btn btn-default" alt="Sesudah"><i class="fa fa-caret-down fa-fw"></i></button>
+            </div>
+        </div>
+        <?php } ?>
+      </div> <!-- end of .row visible-xs -->
     </div> <!-- end of container-fluid -->
 
     <!-- Modal -->
