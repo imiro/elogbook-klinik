@@ -154,10 +154,10 @@ if($this->session->userdata('role') == "teacher") {
   <div class="col-xs-2">
     <div class="btn-group-vertical" role="group">
        <?php if($this->session->userdata('role') != "student" && !$entry['verified']) { ?>
-       <button type="button" class="btn btn-success" alt="Setujui Verifikasi"><i class="fa fa-check fa-fw"></i></button>
-       <button type="button" class="btn btn-danger" alt="Tolak Verifikasi"><i class="fa fa-times fa-fw"></i></button>
+       <a href="#" class="btn btn-success" alt="Setujui Verifikasi" data-toggle='modal' data-target='#modalKonfirmasiVerifikasi' onclick="verify1_confirmation('<?= base_url("verifikasi/acc/{$entry['id']}");?>')"><i class="fa fa-check fa-fw"></i></a>
+       <a href="#" class="btn btn-danger" alt="Tolak Verifikasi" data-toggle='modal' data-target='#modalKonfirmasiTolak' onclick="tolak1_confirmation('<?= base_url("verifikasi/tolak/{$entry['id']}");?>')" ><i class="fa fa-times fa-fw"></i></a>
      <?php } if($this->session->userdata('role') != "teacher" && !$entry['verified']) { ?>
-       <button type="button" class="btn btn-default"><i class="fa fa-trash fa-fw"></i></button>
+       <a href='#' class="btn btn-default" data-toggle='modal' data-target='#modalKonfirmasiHapus' onClick='delete1_confirmation(<?=base_url("portofolio/delete/".$entry['id']);?>' ><i class="fa fa-trash fa-fw"></i></a>
      <?php } ?>
      </div>
 
@@ -174,3 +174,23 @@ if($this->session->userdata('role') == "teacher") {
   ++$entry_counter;
   } // end FOREACH ?>
 </div> <!-- end of .row visible-xs -->
+<script type="text/javascript">
+// DATA!!
+
+<?php
+  $allEntryObj = array();
+  foreach($allEntry as $entry) {
+    $obj = new \stdClass;
+    foreach($tabel as $key => $heading) {
+      $obj->{$key} = $entry[$key];
+    }
+    array_push($allEntryObj, $obj);
+  }
+  echo "// OKE";
+?>
+
+var temp = JSON.parse('<?php echo json_encode($allEntryObj); ?>');
+for(let t of temp) {
+  allEntry[ t.id ] = t;
+}
+</script>

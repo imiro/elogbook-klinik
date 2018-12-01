@@ -49,7 +49,7 @@ class Verifikasi extends CI_Controller {
 		}
 
 		$viewData['user'] = $this->session->userdata('name');
-		$this->load->view('header');
+		$this->load->view('portofolio/header');
 
 		$viewData['title'] = "Antrian Verifikasi";
 		$viewData['lastheading'] = "Aksi";

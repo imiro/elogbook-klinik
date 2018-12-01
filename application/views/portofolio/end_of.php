@@ -106,25 +106,61 @@
 <script src="<?php echo base_url("assets/js/modal_verifikasi.js"); ?>" ></script>
 <script type="text/javascript">
 
+var modal_labels = {
+  konfirmasi: {
+    modal_id: "#modalKonfirmasiVerifikasi",
+    title: "<p>Yakin akan memverifikasi entri ini? </p><br/>\n"
+  },
+  tolak: {
+    modal_id: "#modalKonfirmasiTolak",
+    title: "<p>Yakin akan <b>menolak verifikasi</b> entri ini? </p><br/>\n"
+  },
+  delete: {
+    modal_id: "#modalKonfirmasiHapus",
+    title: "<p>Yakin akan menghapus entri ini? </p><br/>\n"
+  }
+};
+
 function verify_confirmation(url, elem) {
   modal_confirmation(
-      "#modalKonfirmasiVerifikasi",
-      "<p>Yakin akan memverifikasi entri ini? </p><br/>\n",
-      url, elem);
+      modal_labels.konfirmasi.modal_id,
+      modal_labels.konfirmasi.title,
+      url, generate_body(elem));
 }
 
 function tolak_confirmation(url, elem) {
 modal_confirmation(
-      "#modalKonfirmasiTolak",
-      "<p>Yakin akan <b>menolak verifikasi</b> entri ini? </p><br/>\n",
-      url, elem );
+      modal_labels.tolak.modal_id,
+      modal_labels.tolak.title,
+      url, generate_body(elem));
 }
 
 function delete_confirmation(url, elem) {
   modal_confirmation(
-      "#modalKonfirmasiHapus",
-      "<p>Yakin akan menghapus entri ini? </p><br/>\n",
-      url, elem);
+      modal_labels.delete.modal_id,
+      modal_labels.delete.title,
+      url, generate_body(elem));
+}
+
+function verify1_confirmation(url) {
+  modal_confirmation(
+      modal_labels.konfirmasi.modal_id,
+      modal_labels.konfirmasi.title,
+      url, "");
+}
+
+function tolak1_confirmation(url) {
+modal_confirmation(
+      modal_labels.tolak.modal_id,
+      modal_labels.tolak.title,
+      url, "");
+}
+
+function delete1_confirmation(url) {
+  modal_confirmation(
+      modal_labels.delete.modal_id,
+      modal_labels.delete.title,
+      url, "");
 }
 
 </script>
