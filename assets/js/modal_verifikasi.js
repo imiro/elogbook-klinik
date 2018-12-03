@@ -16,9 +16,10 @@ function generate_body(elem) {
   return ret;
 }
 
-function modal_confirmation(modalId, message, url, elem) {
+function modal_confirmation(modalId, message, url, html) {
+  //alert(`MODAL CONFIRMATION: ${modalId} ${message} ${url} ${html}`);
   $(modalId + " .modal-body").html(
-    message + generate_body(elem)
+    message + html
   );
 
   $(modalId + " .verifikasi").attr("href", url);
