@@ -73,6 +73,8 @@ class Portofolio extends CI_Controller {
 		$viewData['verificators'] = $this->list_model->listVerificators();
 
 		$this->load->view('portofolio/header');
+		if($this->session->userdata('role') == "student")
+			$this->load->view('portofolio/add_item');
 		$this->load->view('portofolio/list', $viewData);
 		$this->load->view('portofolio/end_of');
 	}
