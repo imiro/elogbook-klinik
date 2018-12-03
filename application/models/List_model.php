@@ -97,7 +97,7 @@ class List_model extends CI_Model {
           if( !$query->num_rows() )
             return false;
           $result = $query->result_array();
-          return $result[0]['name'];
+          return $result[0]['name']; // should be equivalent to: $query->row()->name
         }
 
         public function bulkVerify($verifikator, $rowIds, $table = 'kegiatan') {
