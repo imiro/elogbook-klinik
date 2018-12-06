@@ -72,11 +72,11 @@ class Portofolio extends CI_Controller {
 
 		$viewData['verificators'] = $this->list_model->listVerificators();
 
-		$this->load->view('portofolio/header');
+		$this->load->view('portofolio/header', $viewData);
 		if($this->session->userdata('role') == "student")
-			$this->load->view('portofolio/add_item');
+			$this->load->view('portofolio/add_item', $viewData);
 		$this->load->view('portofolio/list', $viewData);
-		$this->load->view('portofolio/end_of');
+		$this->load->view('portofolio/end_of', $viewData);
 	}
 
 	public function delete($id) {
