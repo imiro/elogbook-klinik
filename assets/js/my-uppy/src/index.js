@@ -6,7 +6,8 @@ const generateFileID = require('@uppy/utils/lib/generateFileID')
 window.uppy =  Uppy()
 .use(Dashboard, {
   inline: true,
-  target: '#drag-drop-area'
+  target: '#drag-drop-area',
+  showLinkToFileUploadResult: true
 })
 // .use(Uppy.Tus, {endpoint: 'https://master.tus.io/files/'})
 .use(XHRUpload, {
@@ -27,6 +28,8 @@ window.uppy =  Uppy()
     name: file.name
   }
 
+  uppy.setFileState(file.id, {uploadURL: base_url + 'pics/viewer/' + response.id})
+
   fetch(url, {
     method: 'PATCH',
     headers: {
@@ -45,11 +48,7 @@ window.uppy =  Uppy()
     'Content-Type': file.type
   }
 
-  this.setState({
-    files: Object.assign({}, this.getState().files, {
-      [fileID]: newFile
-    })
-  })
+  uppy.setFileState(file.id, file)
 })
 
 uppy.on('complete', (result) => {
@@ -69,7 +68,7 @@ fetch(url, {
 .then(response => response.json())
 .then( function (json) {
     console.log(json)
-
+    // document.getElementById('loading-block').visibility = 'hidden'
     let filePromises = []
     json.files.forEach((file) => {
       filePromises.push(
@@ -110,7 +109,8 @@ fetch(url, {
         size: file.size || 0,
         // isRemote: true,
         // remote: file.remote || '',
-        preview: file.thumbnailLink
+        preview: file.thumbnailLink,
+        uploadURL: base_url + 'pics/viewer/' + file.id
       }
       filesList[newFile.id] = newFile
     })
