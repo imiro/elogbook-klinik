@@ -69,6 +69,8 @@ if($this->session->userdata('role') == "teacher") {
           echo "<th>$heading</th>\n";
         }
         ?>
+        <th>Dokumentasi</th>
+        <th>Status</th>
       </thead>
 
       <?php
@@ -81,6 +83,17 @@ if($this->session->userdata('role') == "teacher") {
 
         // TODO: styling! _the date_
 
+        $url = base_url("pics/index/{$entry['id']}");
+        // 'Dokumentasi'
+
+        echo <<<"EOD"
+        <td>
+        <a href="{$url}"><i class='fa fa-fw fa-pencil'> </i> lihat/tambah</a>
+        </td>
+EOD;
+
+
+        // 'Status' column
         if($this->session->userdata('role') == "teacher") {
           echo "<td class='action_cell'>";
 
@@ -134,6 +147,10 @@ if($this->session->userdata('role') == "teacher") {
           echo "<tr><td>{$heading}</td><td>{$entry[$key]}</td></td>";
         }
         ?>
+        <tr>
+          <td>Dokumentasi</td>
+          <td><a href="<?=$url;?>"><i class='fa fa-fw fa-pencil'> </i> lihat/tambah</a></td>
+        </tr>
         <tr>
           <td>Status</td>
           <td>

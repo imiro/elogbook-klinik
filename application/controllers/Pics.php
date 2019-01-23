@@ -83,7 +83,8 @@ class Pics extends CI_Controller {
 
 		$this->load->view('pics', array(
 			'accessToken' => $client->getAccessToken()['access_token'],
-			'folderId' => $folderId
+			'folderId' => $folderId,
+			'id' => $id
 		));
 
 	}
