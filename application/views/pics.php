@@ -16,6 +16,7 @@
     const folderId = '<?=$folderId;?>'
     const base_url = '<?=base_url()?>'
     </script>
-    <script src="<?=base_url('assets/js/my-uppy/dist/main.js')?>" ></script>
+    <script src="<?=base_url('assets/js/my-uppy/dist/main.min.js')?>" ></script>
+    <!-- <script src="<?=base_url('assets/js/my-uppy/dist/main.js')?>" ></script> -->
   </body>
 </html>
