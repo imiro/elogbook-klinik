@@ -27,6 +27,10 @@ class Kalkulator extends CI_Controller {
 		$this->risiko();
 	}
 
+	public function egfr() {
+			$this->load->view('kalkulator/egfr');
+	}
+
 	public function risiko()
 	{
 		$this->load->view('portofolio/header');
@@ -113,7 +117,7 @@ class Kalkulator extends CI_Controller {
                 );
 
         if ($z == null)
-            $a4 = exp(-11.424379 + 0.560396 * log(inData[2]) / log(2)
+            $a4 = exp(-11.424379 + 0.560396 * log($inData[2]) / log(2)
                 + 2.185574 * ($inData[7] === true ? 1 : 0)
                 + 0.033407 * $inData[0] + 7.264105 * ($inData[3] / $inData[2])
                 - 2.77392 * (pow(($inData[3] / $inData[2]), 2))

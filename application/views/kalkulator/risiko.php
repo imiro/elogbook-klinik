@@ -3,17 +3,6 @@
         <div class="inputContainer">
             <form action="" method="POST">
                 <table style="width: 100%;">
-                    <tr>
-                        <td colspan="2">
-                            Usia pasien saat pemeriksaan
-                        </td>
-                        <td>
-                            <input  id="row0" type="number" placeholder="Years" name="inData[0]" >
-                        </td>
-                        <td>
-
-                        </td>
-                    </tr>
 
                     <tr>
                         <td colspan="2">
@@ -28,6 +17,30 @@
                         <td>
                             <div class="info" ng-click="doInfo(0)"></div>
                         </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            Usia pasien saat pemeriksaan
+                        </td>
+                        <td>
+                            <input  id="row0" type="number" placeholder="Years" name="inData[0]" >
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td colspan="2">Ada ascites?</td>
+                        <td>
+                            <select class="styled-select" name="inData[7]">
+                            <option value=false ng-selected="inData[7] == false">No</option>
+                            <option value=true ng-selected="inData[7] == true">Yes</option>
+                        </select>
+                        </td>
+                        <td></td>
                     </tr>
 
                     <tr>
@@ -75,17 +88,6 @@
                         </select>
                         </td>
                         <td><div class="info" ng-click="doInfo(5)"></div></td>
-                    </tr>
-
-                    <tr>
-                        <td colspan="2">Ada ascites?</td>
-                        <td>
-                            <select class="styled-select" name="inData[7]">
-                            <option value=false ng-selected="inData[7] == false">No</option>
-                            <option value=true ng-selected="inData[7] == true">Yes</option>
-                        </select>
-                        </td>
-                        <td></td>
                     </tr>
 
                     <tr>
