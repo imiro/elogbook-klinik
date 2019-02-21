@@ -22,7 +22,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="single-preview">
                                 <div class="preview-content">
-                                    <a href="<?=base_url('portofolio')?>" target="_blank">
+                                    <a href="<?=base_url('portofolio')?>">
                                         <div class="preview-content-thumb" style="background-image: url(assets/images/portfolio.png)"></div>
                                     </a>
                                 </div>
@@ -34,12 +34,30 @@
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="single-preview">
                                 <div class="preview-content">
-                                    <a href="<?=base_url('Refleksi')?>" target="_blank">
+                                    <a href="<?=base_url('Refleksi')?>">
                                         <div class="preview-content-thumb" style="background-image: url(assets/images/reflection.jpg)"></div>
                                     </a>
                                 </div>
                                 <div class="thumb-title">
                                     <h2><a href="<?=base_url('Refleksi')?>" target="_blank"> REFLEKSI DIRI </a></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-xs-12 text-center">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="single-preview">
+                                <div class="preview-content">
+                                    <a href="<?=base_url('Rumus')?>">
+                                        <div class="preview-content-thumb" style="background-image: url(assets/images/portfolio.png)"></div>
+                                    </a>
+                                </div>
+                                <div class="thumb-title">
+                                    <h2><a href="<?=base_url('portofolio')?>" target="_blank"> Kalkulator Ginekologi Onkologi </a></h2>
                                 </div>
                             </div>
                         </div>
