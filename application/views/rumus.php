@@ -28,9 +28,21 @@
                                     </a>
                                 </div>
                                 <div class="thumb-title">
-                                    <h2><a href="<?=base_url('kalkulator/egfr')?>"> e-GFR </a></h2>
+                                    <h2><a href="<?=base_url('egfr')?>"> e-GFR </a></h2>
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="single-preview">
+                                <div class="preview-content">
+                                    <a href="<?=base_url('kalkulator/risiko')?>">
+                                        <div class="preview-content-thumb" style="background-image: url(assets/images/math.jpg)"></div>
+                                    </a>
+                                </div>
+                                <div class="thumb-title">
+                                    <h2><a href="<?=base_url('Refleksi')?>"> Skor Prediksi Keganasan Ovarium </a></h2>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>

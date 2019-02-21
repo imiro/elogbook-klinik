@@ -34,7 +34,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="single-preview">
                                 <div class="preview-content">
-                                    <a href="prantokon/index-slider.html" target="_blank">
+                                    <a href="<?=base_url('Refleksi')?>" target="_blank">
                                         <div class="preview-content-thumb" style="background-image: url(assets/images/reflection.jpg)"></div>
                                     </a>
                                 </div>
