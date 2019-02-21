@@ -22,13 +22,13 @@
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="single-preview">
                                 <div class="preview-content">
-                                    <a href="<?=base_url('egfr')?>">
+                                    <a href="<?=base_url('kalkulator/egfr')?>">
                                         <div class="preview-content-thumb" style="background-image: url(assets/images/math.jpg)">
                                         </div>
                                     </a>
                                 </div>
                                 <div class="thumb-title">
-                                    <h2><a href="<?=base_url('egfr')?>"> e-GFR </a></h2>
+                                    <h2><a href="<?=base_url('kalkulator/egfr')?>"> e-GFR </a></h2>
                                 </div>
                             </div>
                         </div>
