@@ -27,7 +27,7 @@
                                     </a>
                                 </div>
                                 <div class="thumb-title">
-                                    <h2><a href="<?=base_url('portofolio')?>" target="_blank"> PORTOFOLIO </a></h2>
+                                    <h2><a href="<?=base_url('portofolio')?>"> PORTOFOLIO </a></h2>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                     </a>
                                 </div>
                                 <div class="thumb-title">
-                                    <h2><a href="<?=base_url('Refleksi')?>" target="_blank"> REFLEKSI DIRI </a></h2>
+                                    <h2><a href="<?=base_url('Refleksi')?>"> REFLEKSI DIRI </a></h2>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <div class="single-preview">
                                 <div class="preview-content">
                                     <a href="<?=base_url('Rumus')?>">
-                                        <div class="preview-content-thumb" style="background-image: url(assets/images/portfolio.png)"></div>
+                                        <div class="preview-content-thumb" style="background-image: url(assets/images/math.jpg)"></div>
                                     </a>
                                 </div>
                                 <div class="thumb-title">
@@ -62,6 +62,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="single-preview">
+                                <div class="preview-content">
+                                    <a href="<?=base_url('Borang')?>">
+                                        <div class="preview-content-thumb" style="background-image: url(assets/images/portfolio.png)"></div>
+                                    </a>
+                                </div>
+                                <div class="thumb-title">
+                                    <h2><a href="<?=base_url('Borang')?>"> Borang Mini-Cex </a></h2>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
