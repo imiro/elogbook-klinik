@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Portofolio extends CI_Controller {
+class Logbook extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -36,6 +36,12 @@ class Portofolio extends CI_Controller {
 		date_default_timezone_set("Asia/Jakarta");
 	}
 
+
+	private $stase = array("IPD", "IKA", "Bedah", "Obgyn", "Kardiologi", "Mata",
+												 "THT", "Kulit", "Psikiatri", "Pulmo", "Neuro", "Forensik");
+
+	private $wahana = array("RSCM", "RSUT", "RSF", "RSP", "RSPI-SS", "RSPJNHK", "Lainnya");
+
 	public function index()
 	{
 		if( !empty($this->input->post()) )
@@ -43,7 +49,7 @@ class Portofolio extends CI_Controller {
 
 			$data = array();
 			// TODO: sudah bener semua kah? di database dll
-			$keys = array('user_id', 'nama', 'tanggal', 'lokasi', 'usia', 'nrm', 'diagnosis', 'tindakan', 'kode', 'verifikator');
+			$keys = array('user_id', 'stase', 'wahana', 'nama', 'tanggal', 'lokasi', 'usia', 'nrm', 'diagnosis', 'kegiatan', 'tindakan', 'kode');
 			// $keys = array('user_id', 'nama', 'tanggal', 'usia', 'diagnosis', 'tindakan', 'kode', 'verifikator');
 
 			foreach($keys as $k) $data[$k] = $this->input->post($k); // TODO: unverified!! needs verification?
@@ -71,10 +77,14 @@ class Portofolio extends CI_Controller {
 		$this->entriesGetNames($viewData['allEntry']);
 
 		$viewData['verificators'] = $this->list_model->listVerificators();
+		$viewData['stase'] = $this->stase;
+		$viewData['list_wahana'] = $this->wahana;
+		$viewData['stase_terakhir'] = -1;
+		$viewData['wahana_terakhir'] = -1;
 
 		$this->load->view('portofolio/header');
 		if($this->session->userdata('role') == "student")
-			$this->load->view('portofolio/add_item');
+			$this->load->view('portofolio/add_item', $viewData);
 		$this->load->view('portofolio/list', $viewData);
 		$this->load->view('portofolio/end_of');
 	}

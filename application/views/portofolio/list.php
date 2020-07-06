@@ -13,9 +13,7 @@ $tabel = array(
   "usia" => "Usia",
   "nrm" => "NRM",
   "diagnosis" => "Diagnosis",
-  "tindakan" => "Tindakan",
-  "kode" => "Achievement",
-  "verifikator" => "Verifikator",
+  "kegiatan" => "Kegiatan",
   "created_at" => "Diinput Tanggal"
 );
 
@@ -52,6 +50,30 @@ if($this->session->userdata('role') == "teacher") {
   );
 }
 
+
+function kontenKegiatan($entry, $key) {
+  $kode = array("", "Observasi", "Asistensi", "Operator dalam Supervisi Tidak Langsung",
+                "Operator dalam Supervisi Langsung", "Operator Mandiri");
+  if($entry[$key] == "tindakan") {
+    $ret = "Tindakan: <br/>" . $entry['tindakan'] . "<br/>";
+    $ret .= "({$kode[$entry['kode']]})";
+  } else
+    $ret = "Anamnesis / PF / Edukasi";
+  return $ret;
+}
+
+function kontenLokasi($str) {
+  $dict = array(
+    "poliklinik" => "Poliklinik",
+    "ok" => "Ruang Operasi",
+    "igd" => "Instalasi Gawat Darurat",
+    "icu" => "ICU/HCU/ICCU",
+    "ranap" => "Rawat Inap"
+  );
+  if (in_array($str, array_keys($dict)))
+    return $dict[$str];
+  else return "";
+}
 ?>
 
 <?php if(isset($title)): ?>
@@ -76,39 +98,14 @@ if($this->session->userdata('role') == "teacher") {
       foreach($allEntry as $entry) {
         echo "<tr>";
         foreach($tabel as $key => $heading) {
-          echo "<td>{$entry[$key]}</td>";
-        }
-
-        // TODO: styling! _the date_
-
-        if($this->session->userdata('role') == "teacher") {
-          echo "<td class='action_cell'>";
-
-          if($entry['verified'] == 0) {
-            echo "<a href='#' onclick=\"verify_confirmation('" . base_url("verifikasi/acc/{$entry["id"]}") . "', this)\" class='btn btn-primary' data-toggle='modal' data-target='#modalKonfirmasiVerifikasi'>Verifikasi</a>";
-            echo "<a href='#' onclick=\"tolak_confirmation('" . base_url("verifikasi/tolak/{$entry["id"]}") . "', this)\" class='btn btn-danger' data-toggle='modal' data-target='#modalKonfirmasiTolak'>Tolak Verifikasi</a>";
-          }
-          else {
-            if ($entry['verified'] > 0) echo "<span class='label label-success'><i class='glyphicon glyphicon-ok'> </i> Terverifikasi</span> pada ";
-            else echo "<span class='label label-danger'><i class='glyphicon glyphicon-remove'> </i> Verifikasi ditolak</span> pada ";
-            echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
-          }
-
-          echo "</td>";
-        } else {
-          echo "<td>";
-          if (!$entry['verified']) {
-            echo '<span class="label label-warning">
-              <i class="glyphicon glyphicon-time"> </i> Menunggu Verifikasi </span> ';
-            echo  "<span><a href='#' data-toggle='modal' data-target='#modalKonfirmasiHapus' onClick='delete_confirmation(\"" .
-              base_url("portofolio/delete/".$entry['id']) .
-              "\", this)'<i class=\"fa fa-trash-o fa-fw\"></i> </a></span>";
-          } else {
-            if ($entry['verified'] > 0) echo '<p> <span class="label label-success"><i class="glyphicon glyphicon-ok"> </i> Terverifikasi</span> pada  </p> ';
-            else echo '<p> <span class="label label-danger"><i class="glyphicon glyphicon-remove"> </i> Verifikasi ditolak</span> pada  </p> ';
-            echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
-          }
-          echo "</td>";
+          if($key == "kegiatan") {
+            echo "<td>";
+            echo kontenKegiatan($entry, $key);
+            echo "</td>";
+          } else if ($key == "lokasi") {
+            echo "<td>". kontenLokasi($entry[$key]) ."</td>";
+          } else
+            echo "<td>{$entry[$key]}</td>";
         }
 
         echo "</tr>";
@@ -117,7 +114,8 @@ if($this->session->userdata('role') == "teacher") {
     </table>
   </div>
 </div> <!-- end of .row hidden-xs -->
-<div class="row visible-xs">
+
+<div class="row visible-xs" style='margin-top: 10px;'>
   <?php
   $entry_counter = 0;
   foreach($allEntry as $entry) {
@@ -130,24 +128,14 @@ if($this->session->userdata('role') == "teacher") {
       <table class="table">
         <?php
         foreach($tabel as $key => $heading) {
-          if($heading != "#")
-          echo "<tr><td>{$heading}</td><td>{$entry[$key]}</td></td>";
+          if ($key == "kegiatan") {
+            echo "<tr><td>Kegiatan</td><td>".kontenKegiatan($entry, $key)."</td></tr>";
+          } else if($key == "lokasi")
+            echo "<tr><td>{$heading}</td><td>".kontenLokasi($entry[$key])."</td></tr>";
+          else if($heading != "#")
+            echo "<tr><td>{$heading}</td><td>{$entry[$key]}</td></tr>";
         }
         ?>
-        <tr>
-          <td>Status</td>
-          <td>
-            <?php
-            if (!$entry['verified']) echo '<span class="label label-warning">
-              <i class="glyphicon glyphicon-time"> </i> Menunggu Verifikasi </span> ';
-            else {
-              if ($entry['verified'] > 0) echo '<p> <span class="label label-success"><i class="glyphicon glyphicon-ok"> </i> Terverifikasi</span> pada  </p> ';
-              else echo '<p> <span class="label label-danger"><i class="glyphicon glyphicon-remove"> </i> Verifikasi ditolak</span> pada  </p> ';
-              echo date( 'Y-m-d H:i:s', $entry['verified_at'] );
-            }
-            ?>
-          </td>
-        </tr>
       </table>
     </div>
   </div>

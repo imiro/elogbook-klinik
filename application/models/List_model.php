@@ -1,11 +1,14 @@
 <?php
+
+define('TABLE_NAME', 'logbook_entry');
+
 class List_model extends CI_Model {
 
         public function __construct()
         {
                 $this->load->database();
 
-                if( !$this->db->table_exists('kegiatan') ) {
+                if( !$this->db->table_exists(TABLE_NAME) ) {
                   // create
                   $this->load->dbforge();
                   $this->dbforge->add_field('id');
@@ -14,9 +17,14 @@ class List_model extends CI_Model {
                   $this->dbforge->add_field(array(
                       'user_id' => $defaults,
                       'tanggal' =>  array('type' => 'DATE'),
+                      'stase' => array('type' => 'INT'),
+                      'wahana' => array('type' => 'INT'),
+                      'lokasi' => $defaults,
                       'nama' => $defaults,
                       'usia' => $defaults,
+                      'nrm' => $defaults,
                       'diagnosis' => $defaults,
+                      'kegiatan' => $defaults,
                       'tindakan' => $defaults,
                       'kode'  => array(
                           'type' => 'INT',
@@ -25,9 +33,10 @@ class List_model extends CI_Model {
                       'verifikator' => $defaults,
                       'verified' => array(
                           'type' => 'BOOL'
-                      )
+                      ),
+                      'created_at timestamp default current_timestamp'
                   ));
-                  $this->dbforge->create_table('kegiatan');
+                  $this->dbforge->create_table(TABLE_NAME);
                 }
         }
 
@@ -45,7 +54,7 @@ class List_model extends CI_Model {
           // lengkapi $data
           $data['verified'] = 0; // pastinya belum verified dong.
           // tambahkan
-          $this->db->insert('kegiatan', $data);
+          $this->db->insert(TABLE_NAME, $data);
 
           $rowId = $this->db->insert_id();
 
@@ -62,7 +71,7 @@ class List_model extends CI_Model {
           $this->db->where('id', $rowId)
                    ->where('user_id', $userId);
 
-          if( !$this->db->delete('kegiatan') )
+          if( !$this->db->delete(TABLE_NAME) )
             return false;
           else
             return true;
@@ -70,7 +79,7 @@ class List_model extends CI_Model {
 
         public function get_entries($user_id) {
           // TODO: limit to top 10 ?
-          $this->db->select('*')->from('kegiatan')
+          $this->db->select('*')->from(TABLE_NAME)
                    ->where('user_id',$user_id)
                    ->order_by('verified','ASC');
           $query = $this->db->get();
@@ -80,13 +89,13 @@ class List_model extends CI_Model {
 
         public function getAllEntries() {
           $this->db->select('*');
-          $this->db->from('kegiatan');
+          $this->db->from(TABLE_NAME);
           $query = $this->db->get();
           return $query->result_array();
         }
 
         public function getEntryById($rowId) {
-          $query = $this->db->get_where('kegiatan', array('id' => $rowId));
+          $query = $this->db->get_where(TABLE_NAME, array('id' => $rowId));
 
           if( $query->num_rows() != 1 ) return false;
           return $query->result_array();
@@ -100,7 +109,7 @@ class List_model extends CI_Model {
           return $result[0]['name']; // should be equivalent to: $query->row()->name
         }
 
-        public function bulkVerify($verifikator, $rowIds, $table = 'kegiatan') {
+        public function bulkVerify($verifikator, $rowIds, $table = TABLE_NAME) {
           foreach($rowIds as $id)
             $this->verifyById($verifikator, $id, $table);
         }
@@ -114,7 +123,7 @@ class List_model extends CI_Model {
          * @param integer       $rowId  id dari entri
          * @param integer(-1..1) $value  setuju/tolak verifikasi ## harusnya tidak mungkin jadi 0 lagi, once touched by verificator
          */
-        public function verifyById($rowId, $verifikator, $value, $table = 'kegiatan') {
+        public function verifyById($rowId, $verifikator, $value, $table = TABLE_NAME) {
           $query = $this->db->get_where($table, array('id' => $rowId, 'verifikator' => $verifikator));
 
           if( count($query->result()) == 1 ) {
@@ -130,7 +139,7 @@ class List_model extends CI_Model {
           return false;
         }
 
-        public function ubahVerifikator($rowIds, $verifikator, $table = 'kegiatan')
+        public function ubahVerifikator($rowIds, $verifikator, $table = TABLE_NAME)
         {
           foreach($rowIds as $id) {
             $this->db->set('verifikator', $verifikator);
@@ -155,10 +164,10 @@ class List_model extends CI_Model {
           $this->db->select('*');
           $this->db->where('verifikator', $verifikatorId);
           $this->db->where('verified', 0); // dapatkan yang belum diverifikasi saja
-          $this->db->from('kegiatan');
+          $this->db->from(TABLE_NAME);
 
           $query = $this->db->get();
-          // $query = $this->db->get_where('kegiatan', array('verifikator' => $verifikatorId));
+          // $query = $this->db->get_where(TABLE_NAME, array('verifikator' => $verifikatorId));
           if(!$query->num_rows())
             return false;
           else {
@@ -177,10 +186,10 @@ class List_model extends CI_Model {
           $this->db->select('*');
           $this->db->where('verifikator', $verifikatorId);
           $this->db->where('verified !=', 0); // dapatkan yang sudah pernah diverifikasi/ditolak saja
-          $this->db->from('kegiatan');
+          $this->db->from(TABLE_NAME);
 
           $query = $this->db->get();
-          // $query = $this->db->get_where('kegiatan', array('verifikator' => $verifikatorId));
+          // $query = $this->db->get_where(TABLE_NAME, array('verifikator' => $verifikatorId));
           if(!$query->num_rows())
             return false;
           else {
@@ -189,7 +198,8 @@ class List_model extends CI_Model {
         }
 
         /*
-         * Diberikan id seorang verifikator, mengembalikan daftar semua row dari tabel 'kegiatan' yang berasosiasi dengan verifikator tersebut.
+         * Diberikan id seorang verifikator, mengembalikan daftar semua row dari
+         * tabel TABLE_NAME yang berasosiasi dengan verifikator tersebut.
          *
          * @param integer $verfikatorId - id dari verifikator terkait
          *
@@ -199,7 +209,7 @@ class List_model extends CI_Model {
         public function dapatkanSemuaEntriVerifikator($verifikatorId) {
           $this->db->select('*');
           $this->db->where('verifikator', $verifikatorId);
-          $this->db->from('kegiatan');
+          $this->db->from(TABLE_NAME);
 
           $query = $this->db->get();
 

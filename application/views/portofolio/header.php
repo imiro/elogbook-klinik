@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>E-Portofolio</title>
+    <title>E-Logbook</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -41,7 +41,7 @@
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 								 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 							</button>
-              <a class="navbar-brand" href="<?php echo base_url(); ?>">E-Portofolio</a>
+              <a class="navbar-brand" href="<?php echo base_url(); ?>">E-Logbook</a>
 						</div>
 
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="<?=base_url()?>assets/images/FKUI2.png" type="image/x-icon">
 
-    <title>Sekolah OnkoGin - Login</title>
+    <title>Logbook Mahasiswa Praktik Klinik FKUI</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
       <div class="wrap-login100">
         <div class="login100-form-title" style="background-image: url(assets/images/IMERI.jpeg);">
           <span class="login100-form-title-1">
-            Divisi Onkologi Ginekologi Departemen Obsgyn RSCM-FKUI
+            Logbook Praktik Klinik Program Studi Pendidikan Dokter FKUI
           </span>
         </div>
 
@@ -83,7 +83,7 @@
 <section class="py-5" style="background-color:white"; background-size:cover; color:black; border-top:2px SOLID "black">
         <div class="container give_margin_top">
     <footer class="bg-dark">
-      <div class="container text-white">
+      <!-- <div class="container text-white">
         <div class="row">
           <div class="col-sm-12">
             <h4 class="m-0" style="border-bottom:1px solid #ccc; padding-bottom:5px">For Question and Assistance</h4>
@@ -99,7 +99,7 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
 </section>
       <!-- /.container -->
 
