@@ -59,7 +59,7 @@
                 </a>
                 </li>
                 <li>
-                  <a href="<?php echo base_url('authentication/logout'); ?>"> Logout </a>
+                  <a href="<?php echo base_url('logout'); ?>"> Logout </a>
                 </li>
                 <?php } ?>
 							</ul>

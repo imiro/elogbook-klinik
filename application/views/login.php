@@ -39,8 +39,8 @@
           </span>
         </div>
 
-        <form class="login100-form validate-form"  action="<?=base_url()?>authentication/login/" method="POST" >
-          <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+        <form class="login100-form validate-form"  action="<?=base_url('logbook')?>" method="POST" >
+          <!-- <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
             <span class="label-input100">Username</span>
             <input class="form-control" id="email" placeholder="E-mail" name="email" type="email" autofocus>
             <span class="focus-input100"></span>
@@ -55,7 +55,6 @@
           <div class="flex-sb-m w-full p-b-30">
             <div class="contact100-form-checkbox">
               <br>
-              <!-- BELUM JADI FUNCTIONNYA, MASIH DIPIKIRIN YANG PENTING ADA DULU-->
               <label class="label-checkbox100" for="ckb1">
                 Remember me
               </label>
@@ -69,6 +68,10 @@
 
           <div class="container-login100-form-btn">
             <input id="login-submit" type="submit" value="Login" class="btn btn-lg btn-success btn-block">
+          </div> -->
+
+          <div class="container-login100-form-btn">
+            <input id="login-submit" type="submit" value="Login with SSO-UI" class="btn btn-lg btn-success btn-block">
           </div>
 
         </form>

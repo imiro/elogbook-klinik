@@ -53,7 +53,8 @@ class Authentication extends CI_Controller {
                 'role' => $validate[0]->role,
                 'user_id' => $validate[0]->user_id,
                 'logged_in' => TRUE,
-
+                'stase_terakhir' => -1,
+                'wahana_terakhir' => -1
             );
             $this->session->set_userdata($newdata);
             $this->goto_landing();

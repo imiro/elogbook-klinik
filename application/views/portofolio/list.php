@@ -16,39 +16,39 @@ $tabel = array(
   "kegiatan" => "Kegiatan",
   "created_at" => "Diinput Tanggal"
 );
-
-if($this->session->userdata('role') == "admin") {
-  $tabel = array(
-    "id" => "#",
-    'user_id' => "Oleh",
-    "tanggal" => "Tanggal",
-    "lokasi" => "Tempat",
-    "nama" => "Nama Pasien",
-    "usia" => "Usia",
-    "nrm" => "NRM",
-    "diagnosis" => "Diagnosis",
-    "tindakan" => "Tindakan",
-    "kode" => "Achievement",
-    "verifikator" => "Verifikator",
-    "created_at" => "Diinput Tanggal"
-  );
-}
-
-if($this->session->userdata('role') == "teacher") {
-  $tabel = array(
-    "id" => "#",
-    "tanggal" => "Tanggal",
-    "lokasi" => "Tempat",
-    "nama" => "Nama Pasien",
-    "usia" => "Usia",
-    "nrm" => "NRM",
-    "diagnosis" => "Diagnosis",
-    "tindakan" => "Tindakan",
-    "kode" => "Achievement",
-    "user_id" => "Oleh",
-    "created_at" => "Diinput Tanggal"
-  );
-}
+//
+// if($this->session->userdata('role') == "admin") {
+//   $tabel = array(
+//     "id" => "#",
+//     'user_id' => "Oleh",
+//     "tanggal" => "Tanggal",
+//     "lokasi" => "Tempat",
+//     "nama" => "Nama Pasien",
+//     "usia" => "Usia",
+//     "nrm" => "NRM",
+//     "diagnosis" => "Diagnosis",
+//     "tindakan" => "Tindakan",
+//     "kode" => "Achievement",
+//     "verifikator" => "Verifikator",
+//     "created_at" => "Diinput Tanggal"
+//   );
+// }
+//
+// if($this->session->userdata('role') == "teacher") {
+//   $tabel = array(
+//     "id" => "#",
+//     "tanggal" => "Tanggal",
+//     "lokasi" => "Tempat",
+//     "nama" => "Nama Pasien",
+//     "usia" => "Usia",
+//     "nrm" => "NRM",
+//     "diagnosis" => "Diagnosis",
+//     "tindakan" => "Tindakan",
+//     "kode" => "Achievement",
+//     "user_id" => "Oleh",
+//     "created_at" => "Diinput Tanggal"
+//   );
+// }
 
 
 function kontenKegiatan($entry, $key) {
@@ -140,14 +140,6 @@ function kontenLokasi($str) {
     </div>
   </div>
   <div class="col-xs-2">
-    <div class="btn-group-vertical" role="group">
-       <?php if($this->session->userdata('role') != "student" && !$entry['verified']) { ?>
-       <a href="#" class="btn btn-success" alt="Setujui Verifikasi" data-toggle='modal' data-target='#modalKonfirmasiVerifikasi' onclick="verify1_confirmation('<?= base_url("verifikasi/acc/{$entry['id']}");?>')"><i class="fa fa-check fa-fw"></i></a>
-       <a href="#" class="btn btn-danger" alt="Tolak Verifikasi" data-toggle='modal' data-target='#modalKonfirmasiTolak' onclick="tolak1_confirmation('<?= base_url("verifikasi/tolak/{$entry['id']}");?>')" ><i class="fa fa-times fa-fw"></i></a>
-     <?php } if($this->session->userdata('role') != "teacher" && !$entry['verified']) { ?>
-       <a href='#' class="btn btn-default" data-toggle='modal' data-target='#modalKonfirmasiHapus' onClick='delete1_confirmation(<?=base_url("portofolio/delete/".$entry['id']);?>' ><i class="fa fa-trash fa-fw"></i></a>
-     <?php } ?>
-     </div>
 
      <div class="btn-group-vertical" role="group">
         <button type="button" class="btn btn-default<?php if ($prevId==-1) echo ' btn-disabled'; ?>" alt="Sebelumnya" <?php if ($prevId==-1) echo "disabled='disabled'"; ?> >

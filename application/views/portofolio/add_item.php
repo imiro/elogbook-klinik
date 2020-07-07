@@ -1,5 +1,4 @@
 <!-- FORM to ADD ITEM -->
-<?php if($this->session->userdata('role') == "student") { ?>
 <form class="form-inline text-center" id="formTambah" action="" method="post">
   <select class='form-control' name='stase'>
       <option value="" > --- PILIH STASE --- </option>
@@ -59,5 +58,4 @@ form > * {
   margin: 3px 1px;
 }
 </style>
-<?php } ?>
 <!-- END OF: FORM to ADD ITEM -->

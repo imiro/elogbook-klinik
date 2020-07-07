@@ -53,4 +53,4 @@ $route['default_controller'] = 'authentication';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['login'] = 'authentication';
+$route['login'] = 'logbook';

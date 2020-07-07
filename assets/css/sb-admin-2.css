@@ -360,8 +360,8 @@ table.dataTable thead .sorting:after {
 
 .error
     {
-        color:red; 
-        font-size:13px; 
+        color:red;
+        font-size:13px;
         font-style: italic;
     }
 .checkbox_inbound{
@@ -476,7 +476,7 @@ p.welcome{
     font-size: 15px;
 }
 a.a_welcome, a.a_welcome:visited, a.a_welcome:link, a.a_welcome:active{
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 #header-icon.fa-user, #header-icon.fa-caret-down{
@@ -532,11 +532,11 @@ img#loading {
   background-color: rgba(0,0,0,0.5); /*dim the background*/
 }
 
-.btn span.glyphicon {               
-    opacity: 0;             
+.btn span.glyphicon {
+    opacity: 0;
 }
-.btn.active span.glyphicon {                
-    opacity: 1;             
+.btn.active span.glyphicon {
+    opacity: 1;
 }
 .button-box{
     border:1px black solid;
@@ -672,7 +672,7 @@ textarea.form-control-custom {
 }
 
 .container-login100 {
-  width: 100%;  
+  width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -751,7 +751,7 @@ textarea.form-control-custom {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 43px 88px 93px 190px;
+  padding: 43px 88px 93px 88px;
 }
 
 
@@ -1018,7 +1018,7 @@ input.input100 {
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 - Tambahan buat dashboard
 ---------------------------------------------

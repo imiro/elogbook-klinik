@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// require('vendor/SSO/SSO.php');
+
+use SSO\SSO;
+
 class Logbook extends CI_Controller {
 
 	/**
@@ -22,16 +26,32 @@ class Logbook extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
+		SSO::authenticate();
+
+		if(!$this->session->userdata('logged_in') ||
+			  $this->session->userdata('username') !== SSO::getUser()->username)
+		{
+				$this->load->model('user_model');
+				$x = $this->user_model->retrieve_or_add_user( SSO::getUser() );
+				$this->session->set_userdata(array(
+					'logged_in' => TRUE,
+					'username' => SSO::getUser()->username,
+					'name' => SSO::getUser()->name
+				));
+		}
+
+
 		$this->load->model('list_model');
+		// die($this->session->userdata('name'));
 
 
-		if(!$this->session->userdata('logged_in'))
-			redirect(base_url());
+		// if(!$this->session->userdata('logged_in'))
+		// 	redirect(base_url());
 
-		if($this->session->userdata('role') == "teacher")
-			redirect(base_url('verifikasi'));
+		// if($this->session->userdata('role') == "teacher")
+		// 	redirect(base_url('verifikasi'));
 
-		$this->user = $this->session->userdata('user_id');
+		$this->user = $this->session->userdata('username');
 
 		date_default_timezone_set("Asia/Jakarta");
 	}
@@ -49,17 +69,24 @@ class Logbook extends CI_Controller {
 
 			$data = array();
 			// TODO: sudah bener semua kah? di database dll
-			$keys = array('user_id', 'stase', 'wahana', 'nama', 'tanggal', 'lokasi', 'usia', 'nrm', 'diagnosis', 'kegiatan', 'tindakan', 'kode');
-			// $keys = array('user_id', 'nama', 'tanggal', 'usia', 'diagnosis', 'tindakan', 'kode', 'verifikator');
+			$keys = array('user_id', 'stase', 'wahana', 'nama', 'tanggal',
+					'lokasi', 'usia', 'nrm', 'diagnosis', 'kegiatan', 'tindakan', 'kode');
 
-			foreach($keys as $k) $data[$k] = $this->input->post($k); // TODO: unverified!! needs verification?
+			// TODO: unverified!! needs verification?
+			foreach($keys as $k) $data[$k] = $this->input->post($k);
 			$data['user_id'] = $this->user;
-			// $data['tanggal'] = strtotime($data['tanggal']);
 
-			// date_default_timezone_set('Asia/Jakarta');
-			// $data['tanggal'] = date('Y-m-d');
+			$entri_terakhir = array(
+				'stase_terakhir' => $this->input->post('stase'),
+				'wahana_terakhir' => $this->input->post('wahana')
+			);
+
+			$this->session->set_userdata($entri_terakhir);
 
 			$this->list_model->new_entry($data); // TODO: what if this operation failed?
+
+			// TODO implement this
+			// $this->user_model->update_entri_terakhir($entri_terakhir);
 		}
 
 		$viewData['user'] = $this->session->userdata('name');
@@ -79,12 +106,11 @@ class Logbook extends CI_Controller {
 		$viewData['verificators'] = $this->list_model->listVerificators();
 		$viewData['stase'] = $this->stase;
 		$viewData['list_wahana'] = $this->wahana;
-		$viewData['stase_terakhir'] = -1;
-		$viewData['wahana_terakhir'] = -1;
+		$viewData['stase_terakhir'] = $this->session->userdata('stase_terakhir');
+		$viewData['wahana_terakhir'] = $this->session->userdata('wahana_terakhir');
 
 		$this->load->view('portofolio/header');
-		if($this->session->userdata('role') == "student")
-			$this->load->view('portofolio/add_item', $viewData);
+		$this->load->view('portofolio/add_item', $viewData);
 		$this->load->view('portofolio/list', $viewData);
 		$this->load->view('portofolio/end_of');
 	}
