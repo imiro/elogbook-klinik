@@ -9,6 +9,6 @@ use SSO\SSO;
 class Logout extends CI_Controller {
 
   public function index() {
-    SSO::logout();
+    SSO::logout(base_url());
   }
 }
