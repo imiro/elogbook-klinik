@@ -102,7 +102,7 @@ class List_model extends CI_Model {
         }
 
         public function getNameById($user_id) {
-          $query = $this->db->get_where('user', array('user_id' => $user_id));
+          $query = $this->db->get_where('users', array('user_id' => $user_id));
           if( !$query->num_rows() )
             return false;
           $result = $query->result_array();
