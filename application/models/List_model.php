@@ -229,7 +229,7 @@ class List_model extends CI_Model {
          * @returns array [$key => $value] = [$id => $nama]
          */
         public function listVerificators() {
-          $query = $this->db->get_where('user', array('role' => 'teacher'));
+          $query = $this->db->get_where('users', array('role' => 'teacher'));
 
           if( !$query->num_rows() )
             return NULL;

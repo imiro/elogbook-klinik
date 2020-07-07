@@ -103,7 +103,8 @@ class Logbook extends CI_Controller {
 		// }
 		$this->entriesGetNames($viewData['allEntry']);
 
-		$viewData['verificators'] = $this->list_model->listVerificators();
+		// $viewData['verificators'] = $this->list_model->listVerificators();
+		
 		$viewData['stase'] = $this->stase;
 		$viewData['list_wahana'] = $this->wahana;
 		$viewData['stase_terakhir'] = $this->session->userdata('stase_terakhir');
