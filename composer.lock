@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e13ba1827b5d95efd4ee7b9db094252",
+    "content-hash": "301b6f060a0f6c984e8d4517623c9c9d",
     "packages": [
         {
             "name": "jasig/phpcas",
@@ -63,16 +63,16 @@
         },
         {
             "name": "ristek/sso",
-            "version": "0.5.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RistekCSUI/SSO.git",
-                "reference": "2318c95a41d4ec6d46203ccec89d890649b71ce9"
+                "url": "https://github.com/imiro/SSO.git",
+                "reference": "e07e81d1573cba94fe1e134ba191ea481a65ae96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RistekCSUI/SSO/zipball/2318c95a41d4ec6d46203ccec89d890649b71ce9",
-                "reference": "2318c95a41d4ec6d46203ccec89d890649b71ce9",
+                "url": "https://api.github.com/repos/imiro/SSO/zipball/e07e81d1573cba94fe1e134ba191ea481a65ae96",
+                "reference": "e07e81d1573cba94fe1e134ba191ea481a65ae96",
                 "shasum": ""
             },
             "require": {
@@ -85,7 +85,6 @@
                     "SSO": "."
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -99,9 +98,12 @@
             "description": "Utility library for authentication with SSO-UI",
             "homepage": "http://github.com/RistekCSUI/SSO",
             "keywords": [
-                "Authentication"
+                "authentication"
             ],
-            "time": "2017-05-23T16:58:22+00:00"
+            "support": {
+                "source": "https://github.com/imiro/SSO/tree/master"
+            },
+            "time": "2020-07-08T15:31:43+00:00"
         }
     ],
     "packages-dev": [
@@ -110,12 +112,12 @@
             "version": "v1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mikey179/vfsStream.git",
+                "url": "https://github.com/bovigo/vfsStream.git",
                 "reference": "fc0fe8f4d0b527254a2dc45f0c265567c881d07e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/fc0fe8f4d0b527254a2dc45f0c265567c881d07e",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/fc0fe8f4d0b527254a2dc45f0c265567c881d07e",
                 "reference": "fc0fe8f4d0b527254a2dc45f0c265567c881d07e",
                 "shasum": ""
             },
@@ -138,7 +140,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ristek/sso": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

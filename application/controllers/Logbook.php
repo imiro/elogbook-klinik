@@ -36,7 +36,9 @@ class Logbook extends CI_Controller {
 				$this->session->set_userdata(array(
 					'logged_in' => TRUE,
 					'username' => SSO::getUser()->username,
-					'name' => SSO::getUser()->name
+					'name' => SSO::getUser()->name,
+					'stase_terakhir' => -1,
+					'wahana_terakhir' => -1
 				));
 		}
 
@@ -68,7 +70,8 @@ class Logbook extends CI_Controller {
 		{
 
 			$data = array();
-			// TODO: sudah bener semua kah? di database dll
+			// TODO: sync input array keys accross different files
+			//  -- probably make it as a static variable of List_model?
 			$keys = array('user_id', 'stase', 'wahana', 'nama', 'tanggal',
 					'lokasi', 'usia', 'nrm', 'diagnosis', 'kegiatan', 'tindakan', 'kode');
 
@@ -104,7 +107,7 @@ class Logbook extends CI_Controller {
 		$this->entriesGetNames($viewData['allEntry']);
 
 		// $viewData['verificators'] = $this->list_model->listVerificators();
-		
+
 		$viewData['stase'] = $this->stase;
 		$viewData['list_wahana'] = $this->wahana;
 		$viewData['stase_terakhir'] = $this->session->userdata('stase_terakhir');

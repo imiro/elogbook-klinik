@@ -10,9 +10,15 @@
 		"irc": "irc://irc.freenode.net/codeigniter",
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/imiro/SSO"
+		}
+	],
 	"require": {
 		"php": ">=5.2.4",
-		"ristek/sso": "*"
+		"ristek/sso": "dev-master"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
