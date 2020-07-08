@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "301b6f060a0f6c984e8d4517623c9c9d",
+    "content-hash": "b8774b934784f53e37ba315fbdf810df",
     "packages": [
         {
             "name": "jasig/phpcas",
@@ -63,16 +63,16 @@
         },
         {
             "name": "ristek/sso",
-            "version": "dev-master",
+            "version": "dev-fix-profesi-intl",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imiro/SSO.git",
-                "reference": "e07e81d1573cba94fe1e134ba191ea481a65ae96"
+                "reference": "ae202d31c5aeb4cfb2b11beb2a154259067a731f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imiro/SSO/zipball/e07e81d1573cba94fe1e134ba191ea481a65ae96",
-                "reference": "e07e81d1573cba94fe1e134ba191ea481a65ae96",
+                "url": "https://api.github.com/repos/imiro/SSO/zipball/ae202d31c5aeb4cfb2b11beb2a154259067a731f",
+                "reference": "ae202d31c5aeb4cfb2b11beb2a154259067a731f",
                 "shasum": ""
             },
             "require": {
@@ -101,9 +101,9 @@
                 "authentication"
             ],
             "support": {
-                "source": "https://github.com/imiro/SSO/tree/master"
+                "source": "https://github.com/imiro/SSO/tree/fix-profesi-intl"
             },
-            "time": "2020-07-08T15:31:43+00:00"
+            "time": "2020-07-08T16:45:52+00:00"
         }
     ],
     "packages-dev": [
