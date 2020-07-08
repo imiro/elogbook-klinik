@@ -44,6 +44,12 @@ class Logbook extends CI_Controller {
 
 
 		$this->load->model('list_model');
+
+		if( $loc = strpos('#', $this->session->userdata('name')) )
+		{
+			$this->session->set_userdata(array(
+				'name' => substr($this->session->userdata('name'),0,$loc)));
+		}
 		// die($this->session->userdata('name'));
 
 

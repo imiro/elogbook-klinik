@@ -40,7 +40,12 @@ class User_model extends CI_Model {
         return $query->result();
       } else {
         $this->db->set('user_id', $user->username);
-        $this->db->set('name', $user->name);
+        if( $loc = strpos('#', $user->name) )
+    		{
+          $this->db->set('name', substr($this->session->userdata('name'),0,$loc));
+    		} else {
+          $this->db->set('name', $user->name);
+        }
         $this->db->set('role', $user->role);
         if($user->role == 'mahasiswa')
           $this->db->set('npm', $user->npm);
