@@ -22,6 +22,8 @@ class List_model extends CI_Model {
                       'lokasi' => $defaults,
                       'nama' => $defaults,
                       'usia' => $defaults,
+                      'satuanusia' => $defaults, // should be enum
+                      'gender' => $defaults, // should be enum
                       'nrm' => $defaults,
                       'diagnosis' => $defaults,
                       'kegiatan' => $defaults,

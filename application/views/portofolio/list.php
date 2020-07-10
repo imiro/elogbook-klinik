@@ -7,10 +7,10 @@
 // assume role = 'student'
 $tabel = array(
   "id" => "#",
+  "stase" => "Stase",
   "tanggal" => "Tanggal",
   "lokasi" => "Tempat",
-  "nama" => "Nama Pasien",
-  "usia" => "Usia",
+  "nama" => "Identitas",
   "nrm" => "NRM",
   "diagnosis" => "Diagnosis",
   "kegiatan" => "Kegiatan",
@@ -74,6 +74,12 @@ function kontenLokasi($str) {
     return $dict[$str];
   else return "";
 }
+
+function kontenIdentitas($entry) {
+  $gender = $entry['gender'] == "pr" ? "Perempuan" : "Laki-laki";
+  return
+  "{$entry['nama']} ({$gender}, {$entry['usia']} {$entry['satuanusia']})";
+}
 ?>
 
 <?php if(isset($title)): ?>
@@ -104,6 +110,10 @@ function kontenLokasi($str) {
             echo "</td>";
           } else if ($key == "lokasi") {
             echo "<td>". kontenLokasi($entry[$key]) ."</td>";
+          } else if($key == "nama") {
+            echo "<td>" . kontenIdentitas($entry) . "</td>";
+          } else if($key == "stase") {
+            echo "<td>" . $stase[$entry[$key]] . "</td>";
           } else
             echo "<td>{$entry[$key]}</td>";
         }
@@ -132,6 +142,10 @@ function kontenLokasi($str) {
             echo "<tr><td>Kegiatan</td><td>".kontenKegiatan($entry, $key)."</td></tr>";
           } else if($key == "lokasi")
             echo "<tr><td>{$heading}</td><td>".kontenLokasi($entry[$key])."</td></tr>";
+          else if($key == "nama")
+            echo "<tr><td>{$heading}</td><td>".kontenIdentitas($entry)."</td></tr>";
+          else if($key == "stase")
+            echo "<tr><td>{$heading}</td><td>".$stase[$entry[$key]]."</td></tr>";
           else if($heading != "#")
             echo "<tr><td>{$heading}</td><td>{$entry[$key]}</td></tr>";
         }

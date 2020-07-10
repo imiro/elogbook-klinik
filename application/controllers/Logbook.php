@@ -66,7 +66,7 @@ class Logbook extends CI_Controller {
 
 
 	private $stase = array("IPD", "IKA", "Bedah", "Obgyn", "Kardiologi", "Mata",
-												 "THT", "Kulit", "Psikiatri", "Pulmo", "Neuro", "Forensik");
+												 "THT", "Kulit", "Psikiatri", "Pulmo", "Neuro", "Forensik", "MPI");
 
 	private $wahana = array("RSCM", "RSUT", "RSF", "RSP", "RSPI-SS", "RSPJNHK", "Lainnya");
 
@@ -79,7 +79,8 @@ class Logbook extends CI_Controller {
 			// TODO: sync input array keys accross different files
 			//  -- probably make it as a static variable of List_model?
 			$keys = array('user_id', 'stase', 'wahana', 'nama', 'tanggal',
-					'lokasi', 'usia', 'nrm', 'diagnosis', 'kegiatan', 'tindakan', 'kode');
+				  'gender', 'lokasi', 'usia', 'satuanusia',
+					'nrm', 'diagnosis', 'kegiatan', 'tindakan', 'kode');
 
 			// TODO: unverified!! needs verification?
 			foreach($keys as $k) $data[$k] = $this->input->post($k);

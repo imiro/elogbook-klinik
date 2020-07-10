@@ -13,7 +13,11 @@
     <?php } ?>
   </select>
   <input type="text" id="datepicker" name="tanggal" value="<?php echo date('Y-m-d'); ?>" class="form-control" placeholder="Tanggal"/>
-  <input type="text" name="nama" value="" class='form-control' placeholder="Nama pasien" />
+  <input type="text" name="nama" value="" class='form-control' placeholder="Inisial nama pasien" maxlength=8 />
+  <select class='form-control' name='gender' placeholder='Jenis Kelamin'>
+    <option value="lk">Laki-laki</option>
+    <option value="pr">Perempuan</option>
+  </select>
   <input type="text" name="usia" value="" class='form-control' placeholder="Usia" size=4 maxlength=3 />
   <select name='satuanusia' class='form-control' >
     <option value="tahun">tahun</option>
@@ -28,6 +32,8 @@
     <option value="ok">Ruang Operasi</option>
     <option value="vk">Ruang Bersalin</option>
     <option value="icu">ICU/HCU/ICCU</option>
+    <option value="ukm">UKM (Posyandu/Posbindu)</option>
+    <option value="rumah">Kunjungan rumah</option>
   </select>
   <select class='form-control' name='kegiatan' placeholder='Lokasi'>
     <option value="nontindakan">Anamnesis / PF / Edukasi</option>
