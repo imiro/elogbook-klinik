@@ -43,8 +43,8 @@
   <select class='form-control opt-tindakan' name='kode' style='display: none;'>
     <option value="1">Observasi</option>
     <option value="2">Asistensi</option>
-    <option value="3">Operator dalam Supervasi Tidak Langsung</option>
-    <option value="4">Operator dalam Supervasi Langsung</option>
+    <option value="3">Operator dalam Supervisi Tidak Langsung</option>
+    <option value="4">Operator dalam Supervisi Langsung</option>
     <option value="5">Operator Mandiri</option>
   </select>
   <input  type="button" data-toggle="modal" data-target="#modalKonfirmasiTambah" value="Tambah" class="btn btn-primary" />
