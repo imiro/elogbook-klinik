@@ -68,7 +68,8 @@ function kontenLokasi($str) {
     "ok" => "Ruang Operasi",
     "igd" => "Instalasi Gawat Darurat",
     "icu" => "ICU/HCU/ICCU",
-    "ranap" => "Rawat Inap"
+    "ranap" => "Rawat Inap",
+    "kamar-autopsi" => "Kamar Autopsi"
   );
   if (in_array($str, array_keys($dict)))
     return $dict[$str];
