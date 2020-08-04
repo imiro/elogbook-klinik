@@ -32,6 +32,7 @@
     <option value="ok">Ruang Operasi</option>
     <option value="vk">Ruang Bersalin</option>
     <option value="icu">ICU/HCU/ICCU</option>
+    <option value="kamar-autopsi">Kamar Autopsi</option>
     <option value="ukm">UKM (Posyandu/Posbindu)</option>
     <option value="rumah">Kunjungan rumah</option>
   </select>
