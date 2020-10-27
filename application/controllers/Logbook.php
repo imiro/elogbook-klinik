@@ -26,8 +26,12 @@ class Logbook extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		SSO::authenticate();
+		 $this->session->set_userdata(
+		 	array('logged_in'=>true, 'username'=>'muhammad.aji31',
+		 				'name' => 'Muhammad Aji Muharrom') );
+		// SSO::authenticate();
 
+		/*
 		if(!$this->session->userdata('logged_in') ||
 			  $this->session->userdata('username') !== SSO::getUser()->username)
 		{
@@ -41,6 +45,7 @@ class Logbook extends CI_Controller {
 					'wahana_terakhir' => -1
 				));
 		}
+		*/
 
 
 		$this->load->model('list_model');
